@@ -76,13 +76,23 @@ class displayStart(Frame):
         super().__init__(master)
         self.config(bg=self.master.color_background)
         self.grid(column=0, row=0, sticky="nsew")
+
         self.addComponents()
 
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
+
     def addComponents(self):
+        photo = ImageTk.PhotoImage(
+            Image.open(paths / "assets/Background.png").resize((700, 700), Image.LANCZOS)
+        )
+        logo = Label(self, image=photo, bg=self.master.color_background)
+        logo.image = photo
+        logo.grid(column=0, row=0, rowspan=2)
+        
+        
         square = Canvas(self, height=391, width=540, bg=self.master.color_second)
         square.grid(column=0, row=0, padx=10, pady=10)
         
