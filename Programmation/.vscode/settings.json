@@ -1,0 +1,20 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        ".vscode": true,
+        "widgets/__pycache__": true,
+        "display/__pycache__": true,
+        "display/quiz/__pycache__": true
+    },
+    "hide-files.files": [
+        ".vscode",
+        "widgets/__pycache__",
+        "display/__pycache__",
+        "display/quiz/__pycache__"
+    ]
+}
