@@ -2,7 +2,12 @@ from tkinter import *
 import ctypes as ct
 from pathlib import Path
 
-from display.quiz.choice import displayChoice
+from display.quiz.choice1 import displayChoice1
+from display.quiz.choice2 import displayChoice2
+from display.quiz.click1 import displayClick1
+from display.quiz.DragAndDrop1 import displayDragAndDrop1
+from display.quiz.DragAndDrop2 import displayDragAndDrop2
+from display.quiz.DragAndDrop3 import displayDragAndDrop3
 
 paths = Path(__file__).parent.resolve()
 
@@ -40,7 +45,12 @@ class Window(Tk):
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
-        self.display_start = displayChoice(self)
+        # self.display_start = displayChoice1(self, style=2)
+        # self.display_start = displayChoice2(self, style=2)
+        # self.display_start = displayClick1(self, style=1)
+        # self.display_start = displayDragAndDrop1(self, style=2)
+        # self.display_start = displayDragAndDrop2(self, style=2)
+        self.display_start = displayDragAndDrop3(self, style=2)
         self.display_start.grid(row=0, column=0, sticky="nsew")
 
         self.mainloop()
