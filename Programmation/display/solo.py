@@ -5,6 +5,8 @@ from pathlib import Path
 from widgets.Button import custom_Button
 from widgets.Image import custom_Image
 
+from other.json.readJsonFile import readJsonFile
+
 paths = Path(__file__).parent.resolve()
 
 
@@ -14,12 +16,24 @@ class displaySolo(Frame):
         super().__init__(master)
         self.config(bg=self.master.color_background)
         self.grid(column=0, row=0, sticky="nsew")
-        self.addComponents()
 
         self.grid_rowconfigure(0, weight=2)
         self.grid_rowconfigure(1, weight=1)
         self.grid_rowconfigure(2, weight=3)
         self.grid_columnconfigure(0, weight=1)
+
+        fileData = readJsonFile(paths / "../data/data.json").get()
+        try:
+            self.userName = fileData["score"][0]["name"]
+        except:
+            self.userName = "---------------"
+
+        try:
+            self.userScore = fileData["score"][0]["score"]
+        except:
+            self.userScore = 0
+
+        self.addComponents()
 
     def addComponents(self):
         custom_Image(self, image=paths / "../assets/Background.png", 
@@ -62,12 +76,12 @@ class displaySolo(Frame):
                      sticky=W, padx=(20, 0))
         
         fontStyle = font.Font(size=22)
-        self.name = Label(self.score, text="Biscuit_Bleu", font=fontStyle, 
+        self.name = Label(self.score, text=self.userName, font=fontStyle, 
                           bg=self.master.color_second, fg=self.master.color_text)
         self.name.grid(column=1, row=0)
 
         fontStyle = font.Font(size=30, weight="bold")
-        self.percentage = Label(self.score, text="85%", font=fontStyle, 
+        self.percentage = Label(self.score, text=str(self.userScore) + "%", font=fontStyle, 
                                 bg=self.master.color_second, fg=self.master.color_text)
         self.percentage.grid(column=2, row=0, sticky=E, padx=(0, 20))
 
@@ -92,19 +106,19 @@ class displaySolo(Frame):
 
         fontStyle = font.Font(size=35, weight="bold")
         custom_Button(self.quiz, image=paths / "../assets/Button2.png", 
-                      command=lambda: self.master.startQuiz(10),
+                      command=lambda: self.master.startQuizSolo(10),
                       text="10", font=fontStyle,
                       width=120, height=120,
                       bg=self.master.color_second, fg=self.master.color_text,
                       column=0, row=1)
         custom_Button(self.quiz, image=paths / "../assets/Button2.png",
-                      command=lambda: self.master.startQuiz(20),
+                      command=lambda: self.master.startQuizSolo(20),
                       text="20", font=fontStyle,
                       width=120, height=120,
                       bg=self.master.color_second, fg=self.master.color_text,
                       column=1, row=1)
         custom_Button(self.quiz, image=paths / "../assets/Button2.png", 
-                      command=lambda: self.master.startQuiz(30),
+                      command=lambda: self.master.startQuizSolo(30),
                       text="30", font=fontStyle,
                       width=120, height=120,
                       bg=self.master.color_second, fg=self.master.color_text,

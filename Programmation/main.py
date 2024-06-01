@@ -9,6 +9,9 @@ from display.solo import displaySolo
 from display.duo import displayDuo
 from display.portail import displayPortail
 
+from other.game.solo import solo
+from other.game.portail import portail
+
 paths = Path(__file__).parent.resolve()
 
 
@@ -45,11 +48,12 @@ class Window(Tk):
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
-        self.display_start = displayStart(self)
-        self.display_start.grid(row=0, column=0, sticky="nsew")
-
+        self.home()
         self.mainloop()
 
+    def home(self):
+        self.display_start = displayStart(self)
+        self.display_start.grid(row=0, column=0, sticky="nsew")
 
 
     def startGame(self):
@@ -100,20 +104,35 @@ class Window(Tk):
     def joinGroup(self, code):
         print(f"join group with code: {code}")
 
-        self.startQuiz()
+        self.startQuizDuo
 
     
     def connexionPortail(self, code):
         print(f"connexion portail with code: {code}")
 
-        self.startQuiz()
+        self.startQuizPortail()
 
 
-    def startQuiz(self, numberQuestion=20):
+
+    def startQuizSolo(self, numberQuestion=20):
         for content in self.grid_slaves():
             content.grid_remove()
 
-        print(f"Start game quiz with {numberQuestion} question")
+        solo(self, numberQuestion)
+    
+
+    def startQuizDuo(self):
+        for content in self.grid_slaves():
+            content.grid_remove()
+
+        pass
+
+
+    def startQuizPortail(self):
+        for content in self.grid_slaves():
+            content.grid_remove()
+
+        portail(self, 20)
 
 
 

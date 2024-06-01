@@ -13,13 +13,14 @@ class displayMenu(Frame):
         super().__init__(master)
         self.config(bg=self.master.color_background)
         self.grid(column=0, row=0, sticky="nsew")
-        self.addComponents()
 
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
         self.grid_rowconfigure(2, weight=1)
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
+        
+        self.addComponents()
 
     def addComponents(self):
         custom_Image(self, image=paths / "../assets/Background.png", bg=self.master.color_background, width=700, height=700, column=0, columnspan=2, row=0, rowspan=3)

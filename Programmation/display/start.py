@@ -25,12 +25,12 @@ class displayStart(Frame):
         self.config(bg=self.master.color_background)
         self.grid(column=0, row=0, sticky="nsew")
 
-        self.addComponents()
-
         self.grid_rowconfigure(0, weight=5)
         self.grid_rowconfigure(1, weight=1)
         self.grid_rowconfigure(2, weight=2)
         self.grid_columnconfigure(0, weight=1)
+        
+        self.addComponents()
 
 
     def addComponents(self):

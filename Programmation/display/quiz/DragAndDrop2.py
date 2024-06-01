@@ -1,42 +1,48 @@
 from tkinter import *
 from tkinter import font
-from PIL import Image, ImageTk, ImageDraw
+from PIL import Image, ImageTk
 from pathlib import Path
 
 from widgets.Button import custom_Button
 from widgets.Image import custom_Image
+
+from other.chrono import ChronoApp
+from other.score import scoreApp
 
 paths = Path(__file__).parent.resolve()
 
 
 
 class displayDragAndDrop2(Frame):
-    def __init__(self, master, style=1, playerPoint=[0, 0], time=60, currentQuestion = 0, maxQuestion=20):
+    def __init__(self, master, callback, textQuestion, textResponse, textZones, correctResponse, style=1, playerPoint=[0, 0], time=60, currentQuestion = 0, maxQuestion=20):
         super().__init__(master)
+        self.callback = callback
         
         self.style = style
         self.time = time
         self.playerPoint = playerPoint
 
-        self.questionNumber = f"{currentQuestion}/{maxQuestion}"
+        self.textQuestion = textQuestion
+        self.textResponse = textResponse
+        self.textZones = textZones
+        self.correctResponse = correctResponse
 
-        self.textQuestion = "Replace les éléments dans leurs bonnes catégories."
-        self.textResponse = ["Vélo",
-                             "Bateau", 
-                             "Avion",
-                             "Voiture"]
-        self.textZones = ["moin de 50kg CO2/an", "plus de 50kg CO2/an"]
-        self.correctResponse = [1, 2, 2, 1]
+        self.questionNumber = f"{currentQuestion}/{maxQuestion}"
         self.response = [[0, 0] for _ in range(len(self.textResponse))]
+        self.points = 0
+
+        for content in self.master.grid_slaves():
+            content.grid_remove()
 
         self.config(bg=self.master.color_background)
         self.grid(column=0, row=0, sticky="nsew")
-        self.addComponents()
 
         self.grid_rowconfigure(0, weight=3)
         self.grid_rowconfigure(1, weight=1)
         self.grid_rowconfigure(2, weight=3)
         self.grid_columnconfigure(0, weight=1)
+        
+        self.addComponents()
 
     def addComponents(self):
         if self.style == 2:
@@ -87,7 +93,7 @@ class displayDragAndDrop2(Frame):
             )
             text_items = self.create_wrapped_text(84 + (117 * i) + 5, 220 + 3, self.textResponse[i], max_width=90)
             self.rectangles.append((rect, text_items))
-            DragDrop(self.canvas, rect, text_items, i+1, self.response, self.callback) 
+            DragDrop(self.canvas, rect, text_items, i+1, self.response, self.callbackPosition) 
 
 
 
@@ -116,7 +122,7 @@ class displayDragAndDrop2(Frame):
             )
             self.header.config(image=photo)
             self.header.image = photo
-            ChronoApp(self.master, self.header, self.time)
+            self.chrono = ChronoApp(self.master, self, self.header, self.time)
     
 
     def create_wrapped_text(self, x, y, text, max_width):
@@ -144,10 +150,12 @@ class displayDragAndDrop2(Frame):
 
         return text_items
 
-    def callback(self, responce):
+    def callbackPosition(self, responce):
         self.response = responce
 
     def validate(self):
+        self.chrono.stop_timer()
+
         self.zones = {
             1: [76.0, 116.0],
             2: [193.0, 116.0],
@@ -166,21 +174,25 @@ class displayDragAndDrop2(Frame):
             
 
         if a == len(self.response):
-            print(1)
-        else:
-            print(0)
+            self.points = 1
+        
+        if self.callback:
+            self.callback()
+    
+    def get(self):
+        return self.points
             
 
 
 
 class DragDrop:
-    def __init__(self, canvas, item, text_items, rect_id, response, callback):
+    def __init__(self, canvas, item, text_items, rect_id, response, callbackPosition):
         self.canvas = canvas
         self.item = item
         self.response = response
         self.text_items = text_items
         self.rect_id = rect_id
-        self.callback = callback
+        self.callbackPosition = callbackPosition
         self.magnetZone = [
             [26, 66, 126, 166],
             [143, 66, 243, 166],
@@ -257,99 +269,4 @@ class DragDrop:
         cy = (y1 + y2) / 2
 
         self.response[self.rect_id - 1] = [cx, cy]
-        self.callback(self.response)
-            
-
-
-class ChronoApp:
-    def __init__(self, master, label, time):
-        self.master = master
-        self.label = label
-        self.time_left = time
-        self.update_timer()
-
-    def format_time(self, seconds):
-        mins, secs = divmod(seconds, 60)
-        return f"{mins:02}:{secs:02}"
-
-    def update_timer(self):
-        if self.time_left > 0:
-            self.time_left -= 1
-            self.label.config(text=self.format_time(self.time_left))
-            self.master.after(1000, self.update_timer)
-
-
-
-class scoreApp:
-    def __init__(self, score = [0, 0]):
-        self.rouge = (148, 3, 3)
-        self.bleu = (3, 3, 148)
-
-        self.width = 250
-        self.height = 40
-        self.rayon = 17
-        
-        if score[0] == 0 and score[1] == 0:
-            self.percentageRed = 50
-        else:
-            redScore = score[0] / (score[0] + score[1]) * 100
-            if redScore > 93:
-                self.percentageRed = 93
-            elif redScore < 7:
-                self.percentageRed = 7
-            else:
-                self.percentageRed = int(redScore)
-        
-        self.image = self.create_image()
-
-    def create_image(self):
-        image = Image.new('RGBA', (self.width, self.height), (0, 0, 0, 0))
-
-        redImage = Image.new('RGB', (int(self.width * (self.percentageRed / 100)), self.height), self.rouge)
-        redMask = Image.new('L', (int(self.width * (self.percentageRed / 100)), self.height), 0)
-        draw = ImageDraw.Draw(redMask)
-        draw.rectangle((self.rayon, 0, 
-                        int(self.width * (self.percentageRed / 100)), self.height), 
-                        fill=255)
-        draw.rectangle((0, (self.height - (self.height / 2)) / 2, 
-                        2 * self.rayon, (self.height + (self.height / 2)) / 2), 
-                        fill=255)
-        draw.pieslice((0, 0, 
-                       2 * self.rayon, 2 * self.rayon), 
-                       180, 270, fill=255)
-        draw.pieslice((0, self.height - 2 * self.rayon, 
-                       2 * self.rayon, self.height), 
-                       90, 180, fill=255)
-        redImage.putalpha(redMask)
-
-
-        blueImage = Image.new('RGB', (int(self.width * (1 - (self.percentageRed / 100))), self.height), self.bleu)
-        blueMask = Image.new('L', (int(self.width * (1 - (self.percentageRed / 100))), self.height), 0)
-        draw = ImageDraw.Draw(blueMask)
-        draw.rectangle((0, 0, 
-                        int(self.width * (1 - (self.percentageRed / 100))) - self.rayon, self.height), 
-                        fill=255)
-        draw.rectangle((int(self.width * (1 - (self.percentageRed / 100))) - 2 * self.rayon, (self.height - (self.height / 2)) / 2, 
-                        int(self.width * (1 - (self.percentageRed / 100))), (self.height + (self.height / 2)) / 2), 
-                        fill=255)
-        draw.pieslice((int(self.width * (1 - (self.percentageRed / 100))) - 2 * self.rayon, 0, 
-                       int(self.width * (1 - (self.percentageRed / 100))), 2 * self.rayon), 
-                       270, 0, fill=255)
-        draw.pieslice((int(self.width * (1 - (self.percentageRed / 100))) - 2 * self.rayon, self.height - 2 * self.rayon, 
-                       int(self.width * (1 - (self.percentageRed / 100))), self.height), 
-                       0, 90, fill=255)
-        blueImage.putalpha(blueMask)
-
-        image.paste(redImage, (0, 0), redImage)
-        image.paste(blueImage, (int(self.width * (self.percentageRed / 100)), 0), blueImage)
-
-
-        borderImage = Image.open(paths / "../../assets/quiz/Frame1.png")
-
-        position = ((250 - borderImage.width) // 2, (40 - borderImage.height) // 2)
-        image.paste(borderImage, position, borderImage)
-
-        return image
-    
-    def get(self):
-        return ImageTk.PhotoImage(self.image)
+        self.callbackPosition(self.response)

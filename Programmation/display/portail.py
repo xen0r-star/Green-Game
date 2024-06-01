@@ -16,14 +16,14 @@ class displayPortail(Frame):
 
         self.config(bg=self.master.color_background)
         self.grid(column=0, row=0, sticky="nsew")
-        self.addComponents()
 
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
         self.grid_rowconfigure(2, weight=4)
-
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
+
+        self.addComponents()
 
     def addComponents(self):
         custom_Image(self, image=paths / "../assets/Background.png", 
@@ -62,9 +62,9 @@ class displayPortail(Frame):
         self.text.grid(column=0, row=0, pady=0)
 
         fontStyle = font.Font(size=27, weight="bold")
-        self.entry = Text(self.frame, bg=self.master.color_third, 
+        self.entry = Text(self.frame, bg=self.master.color_fourth, 
                           width=20, height=1, 
-                          font=fontStyle, fg=self.master.color_text, 
+                          font=fontStyle, fg=self.master.color_text, insertbackground=self.master.color_text, 
                           highlightthickness=4, highlightbackground="white", highlightcolor="white")
         self.entry.grid(column=0, row=1, ipadx=5)
         self.center_text(None)

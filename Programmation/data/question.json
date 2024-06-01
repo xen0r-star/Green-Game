@@ -1,0 +1,74 @@
+{
+	"elements": [
+		{
+			"type": "choice1",
+			"question": "Quel est le principal avantage des voitures électriques par rapport aux voitures à essence ?",
+			"choices": [
+				"Elles sont moins chères à l'achat.",
+				"Elles émettent moins de CO2.",
+				"Elles nécessitent moins d'entretien.",
+				"Elles ont une plus grande autonomie."
+			],
+			"answer": 2,
+			"time": 60
+		},
+		{
+			"type": "choice2",
+			"question": "Les voitures électriques produisent zéro émission directe de gaz à effet de serre.",
+			"answer": true,
+			"time": 60
+		},
+		{
+			"type": "click1",
+			"question": "Quelle est la zone la plus polluée par les voitures ?",
+			"answer": [322, 73],
+			"cursor": 2,
+			"time": 60
+		},
+		{
+			"type": "draganddrop1",
+			"question": "Replace les éléments dans l'ordre chronologique.",
+			"choices": [
+				"Les matériaux triés sont nettoyés.",
+				"Les objets sont collectés.",
+				"Les matériaux recyclés deviennent de nouveaux produits.",
+				"Les objets sont déposés dans les bacs.",
+				"Les matériaux sont triés par type."
+			],
+			"answer": [4, 2, 5, 1, 3],
+			"time": 60
+		},
+		{
+			"type": "draganddrop2",
+			"question": "Replace les éléments dans leurs bonnes catégories.",
+			"choices": [
+				"Vélo",
+				"Bateau",
+				"Avion",
+				"Voiture"
+			],
+			"answer": [1, 2, 2, 1],
+			"zones": [
+				"moin de 50kg CO2/an", 
+				"plus de 50kg CO2/an"
+			],
+			"time": 60
+		},
+		{
+			"type": "draganddrop3",
+			"question": "Replace les éléments dans leurs bonnes catégories.",
+			"choices": [
+				"Bike.png",
+                "Boat.png", 
+                "Plane.png",
+                "Car.png"
+			],
+			"answer": [1, 2, 2, 1],
+			"zones": [
+				"moin de 50kg CO2/an", 
+				"plus de 50kg CO2/an"
+			],
+			"time": 60
+		}
+	]
+}
