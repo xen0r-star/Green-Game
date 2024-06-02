@@ -6,6 +6,8 @@ from PIL import Image, ImageTk
 from widgets.Image import custom_Image
 from widgets.Button import custom_Button
 
+from other.firebase.firestore import createGroup, joinGroup
+
 paths = Path(__file__).parent.resolve()
 
 
@@ -78,6 +80,8 @@ class displayDuo(Frame):
 
 
     def join_group(self):
+        self.loopCreate = True
+
         photo_join = ImageTk.PhotoImage(
             Image.open(paths / "../assets/duo/Join_Group2.png").resize((275, 204), Image.LANCZOS)
         )
@@ -119,17 +123,24 @@ class displayDuo(Frame):
         photo = ImageTk.PhotoImage(
             Image.open(paths / "../assets/duo/Join_Button.png").resize((303, 51), Image.LANCZOS)
         )
-        self.button_joined = Button(self.frame, command=lambda: self.master.joinGroup(self.entry.get(1.0, END)), image=photo, 
+        self.button_joined = Button(self.frame, command=lambda: self.join(self.entry.get(1.0, END).replace('\n', '')), image=photo, 
                                     bg=self.master.color_second,
                                     cursor="hand2", compound=CENTER, 
                                     bd=0, highlightthickness=0, highlightbackground="white", 
                                     activebackground=self.master.color_second)
         self.button_joined.image = photo
         self.button_joined.grid(column=0, row=2, ipadx=5, ipady=2)
+    
+    def join(self, token):
+        self.join_group_connexion = joinGroup(token)
+        if self.join_group_connexion.report:
+            print("yes yes yes")
 
 
 
     def create_group(self):
+        self.loopCreate = False
+
         photo_join = ImageTk.PhotoImage(
             Image.open(paths / "../assets/duo/Join_Group1.png").resize((275, 204), Image.LANCZOS)
         )
@@ -159,16 +170,22 @@ class displayDuo(Frame):
         self.text.grid(column=0, row=0, pady=0)
 
         
-        code = self.master.createGroup()
-
+        self.create_group_connexion = createGroup()
 
         fontStyle = font.Font(size=27, weight="bold")
         self.code = custom_Image(self.frame, image=paths / "../assets/Frame4.png", 
-                                 font=fontStyle, text=code,
+                                 font=fontStyle, text=self.create_group_connexion.id,
                                  width=499, height=56,
                                  bg=self.master.color_second, fg=self.master.color_text, 
                                  row=1, column=0)
-
+        
+        self.check_report()
+        
+    def check_report(self):
+        if self.create_group_connexion.report:
+            print("yes yes yes")
+        elif not self.loopCreate:
+            self.master.after(1000, self.check_report)
 
 
     def center_text(self, event):

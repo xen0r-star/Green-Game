@@ -49,7 +49,11 @@ class Window(Tk):
         self.grid_columnconfigure(0, weight=1)
 
         self.home()
-        self.mainloop()
+
+        try:
+            self.mainloop()
+        except KeyboardInterrupt:
+            print("App stopped.")
 
     def home(self):
         self.display_start = displayStart(self)
@@ -94,23 +98,18 @@ class Window(Tk):
                
         print("Portail Game")
 
-
-
-    def createGroup(self):
-        print("create group")
-
-        return "DFE-145"
     
-    def joinGroup(self, code):
-        print(f"join group with code: {code}")
 
-        self.startQuizDuo
 
-    
+
+
     def connexionPortail(self, code):
         print(f"connexion portail with code: {code}")
 
         self.startQuizPortail()
+
+
+
 
 
 
