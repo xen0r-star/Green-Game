@@ -28,7 +28,6 @@ class joinGroup:
         document = ref.get()
 
         if document.exists:
-            ref = db.collection('Duo').document(str(self.token.upper()))
             ref.update({"connexion": True})
             self.report = True
         else:
@@ -44,7 +43,10 @@ class createGroup:
 
             ref = db.collection('Duo').document(self.id)
             ref.set({
-                'connexion': False
+                "connexion": False, 
+                "score": [0, 0], 
+                "question": {},
+                "listQuestion": {}
             })
 
             self.report = False
@@ -58,3 +60,67 @@ class createGroup:
                 doc = change.document.to_dict()
                 if doc.get('connexion') is True:
                     self.report = True
+
+
+
+class connexionPortail:
+    def __init__(self, token):
+        try:
+            self.token = token
+            
+            self.report = False
+            self.join_group()
+
+        except Exception as e:
+            print(f"Error during initialization: {e}")
+    
+    def join_group(self):
+        ref = db.collection('Portail').document(self.token.upper())
+        document = ref.get()
+
+        if document.exists:
+            ref.update({"connexion": True})
+            self.report = True
+        else:
+            self.report = False
+
+
+
+class storageQuestion:
+    def __init__(self, token, data, list):
+        self.token = token
+        self.data = data
+        self.list = list
+
+        self.ref = db.collection('Duo').document(self.token.upper())
+
+        document = self.ref.get()
+
+        if document.exists:
+            self.ref.update({"question": self.data, "listQuestion": self.list})
+            self.report = True
+        else:
+            self.report = False
+
+
+class userPoints:
+    def __init__(self, user, token):
+        self.user = user
+        self.token = token
+        self.ref = db.collection('Duo').document(self.token.upper())
+        
+    def set(self, addPoints):
+        document = self.ref.get()
+
+        if document.exists:
+            data = document.to_dict()
+            data['score'][self.user - 1] += addPoints
+            
+            self.ref.set(data)
+    
+    def get(self):
+        document = self.ref.get()
+
+        if document.exists:
+            data = document.to_dict()
+            return [data['score'][0], data['score'][0]]

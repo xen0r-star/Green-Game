@@ -133,7 +133,8 @@ class displayChoice1(Frame):
     
 
     def validate(self):
-        self.chrono.stop_timer()
+        if self.style != 2 and self.style != 3:
+            self.chrono.stop_timer()
 
         if self.questionNumberSelect == self.correctResponse:
             self.points = 1

@@ -1,12 +1,15 @@
 from tkinter import *
-from tkinter import font
+from tkinter import font, messagebox
 from pathlib import Path
+import random
 from PIL import Image, ImageTk
 
 from widgets.Image import custom_Image
 from widgets.Button import custom_Button
 
 from other.firebase.firestore import createGroup, joinGroup
+from other.firebase.firestore import storageQuestion
+from other.json.readJsonFile import readJsonFileSchema
 
 paths = Path(__file__).parent.resolve()
 
@@ -134,7 +137,9 @@ class displayDuo(Frame):
     def join(self, token):
         self.join_group_connexion = joinGroup(token)
         if self.join_group_connexion.report:
-            print("yes yes yes")
+            
+
+            self.master.startQuizDuo(1, self.entry.get(1.0, END).replace('\n', ''))
 
 
 
@@ -171,6 +176,18 @@ class displayDuo(Frame):
 
         
         self.create_group_connexion = createGroup()
+        self.readFile = readJsonFileSchema(paths / "../data/question.json").get()
+        if self.readFile == []:
+            self.error()
+    
+        self.listeType = []
+        for data in self.readFile:
+            self.listeType.append(data["type"])
+        
+        self.randomList = random.sample(range(0, len(self.listeType)), min(20, len(self.listeType)))
+
+        storageQuestion(self.create_group_connexion.id, self.readFile, self.randomList)
+
 
         fontStyle = font.Font(size=27, weight="bold")
         self.code = custom_Image(self.frame, image=paths / "../assets/Frame4.png", 
@@ -183,7 +200,7 @@ class displayDuo(Frame):
         
     def check_report(self):
         if self.create_group_connexion.report:
-            print("yes yes yes")
+            self.master.startQuizDuo(2, self.create_group_connexion.id)
         elif not self.loopCreate:
             self.master.after(1000, self.check_report)
 
@@ -191,3 +208,8 @@ class displayDuo(Frame):
     def center_text(self, event):
         self.entry.tag_configure("center", justify='center')
         self.entry.tag_add("center", "1.0", "end")
+    
+
+    def error(self):
+        self.master.home()
+        messagebox.showwarning("Erreur de lecture du fichier de données des questions", "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")

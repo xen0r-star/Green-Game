@@ -10,6 +10,7 @@ from display.duo import displayDuo
 from display.portail import displayPortail
 
 from other.game.solo import solo
+from other.game.duo import duo
 from other.game.portail import portail
 
 paths = Path(__file__).parent.resolve()
@@ -98,19 +99,6 @@ class Window(Tk):
                
         print("Portail Game")
 
-    
-
-
-
-
-    def connexionPortail(self, code):
-        print(f"connexion portail with code: {code}")
-
-        self.startQuizPortail()
-
-
-
-
 
 
     def startQuizSolo(self, numberQuestion=20):
@@ -120,11 +108,11 @@ class Window(Tk):
         solo(self, numberQuestion)
     
 
-    def startQuizDuo(self):
+    def startQuizDuo(self, user, token):
         for content in self.grid_slaves():
             content.grid_remove()
 
-        pass
+        duo(self, 20, user, token)
 
 
     def startQuizPortail(self):

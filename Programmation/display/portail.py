@@ -6,6 +6,8 @@ from PIL import Image, ImageTk
 from widgets.Image import custom_Image
 from widgets.Button import custom_Button
 
+from other.firebase.firestore import connexionPortail
+
 paths = Path(__file__).parent.resolve()
 
 
@@ -73,14 +75,19 @@ class displayPortail(Frame):
         photo = ImageTk.PhotoImage(
             Image.open(paths / "../assets/portail/Connexion.png").resize((303, 51), Image.LANCZOS)
         )
-        self.button_connexion = Button(self.frame, command=lambda: self.master.connexionPortail(self.entry.get(1.0, END)), image=photo, 
+        self.button_connexion = Button(self.frame, command=lambda: self.connexion(self.entry.get(1.0, END).replace('\n', '')), image=photo, 
                                     bg=self.master.color_second,
                                     cursor="hand2", compound=CENTER, 
                                     bd=0, highlightthickness=0, highlightbackground="white", 
                                     activebackground=self.master.color_second)
         self.button_connexion.image = photo
         self.button_connexion.grid(column=0, row=2, ipadx=5, ipady=2)
+    
 
+    def connexion(self, token):
+        self.join_group_connexion = connexionPortail(token)
+        if self.join_group_connexion.report:
+            self.master.startQuizPortail()
 
     def center_text(self, event):
         self.entry.tag_configure("center", justify='center')

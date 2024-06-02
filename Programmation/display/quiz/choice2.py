@@ -131,7 +131,8 @@ class displayChoice2(Frame):
     
 
     def validate(self):
-        self.chrono.stop_timer()
+        if self.style != 2 and self.style != 3:
+            self.chrono.stop_timer()
 
         if self.correctResponse == True:
             self.correctResponse = 1

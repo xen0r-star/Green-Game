@@ -137,7 +137,8 @@ class displayDragAndDrop3(Frame):
         self.response = responce
 
     def validate(self):
-        self.chrono.stop_timer()
+        if self.style != 2 and self.style != 3:
+            self.chrono.stop_timer()
 
         self.zones = {
             1: [76.0, 116.0],
