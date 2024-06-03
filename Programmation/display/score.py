@@ -11,16 +11,17 @@ paths = Path(__file__).parent.resolve()
 
 
 class displayScore(Frame):
-    def __init__(self, master, playerScore):
+    def __init__(self, master, playerScore, errorQuestion):
         super().__init__(master)
         self.playerScore = playerScore
+        self.errorQuestion = errorQuestion[:4]
 
         self.config(bg=self.master.color_background)
         self.grid(column=0, row=0, sticky="nsew")
 
         self.grid_rowconfigure(0, weight=4)
         self.grid_rowconfigure(1, weight=1)
-        self.grid_rowconfigure(2, weight=1)
+        self.grid_rowconfigure(2, weight=8)
         self.grid_columnconfigure(0, weight=1)
 
         self.addComponents()
@@ -54,5 +55,29 @@ class displayScore(Frame):
                      width=240, height=126, 
                      column=0, row=1)
 
-        self.frame = Frame(self, bg="red", width=571, height=370)
-        self.frame.grid(column=0, row=2, sticky=S)
+        self.frame = Frame(self, bg=self.master.color_background, width=571, height=370)
+        self.frame.grid(column=0, row=2, sticky=NSEW, padx=64)
+
+        self.frame.grid_columnconfigure(0, weight=1)
+        fontStyle = font.Font(size=15, weight="bold")
+
+        for i in range(len(self.errorQuestion)):
+            elementErrorQuestion = Frame(self.frame, bg=self.master.color_second, width=571, height=64, 
+                                         highlightthickness=4, highlightbackground="white", highlightcolor="white",)
+            elementErrorQuestion.grid(row=i, column=0, pady=(0, 10), sticky="ew")
+            self.frame.grid_rowconfigure(i, weight=1)
+
+            elementErrorQuestion.grid_columnconfigure(0, weight=1)
+            elementErrorQuestion.grid_columnconfigure(1, weight=1)
+
+            custom_Image(elementErrorQuestion, paths / "../assets/score/Error.png", width=50, height=50, bg=self.master.color_second, 
+                         row=0, column=0, sticky=W, padx=(10, 5))
+            
+            if len(self.errorQuestion[i]) > 40:
+                label = Label(elementErrorQuestion, text=self.errorQuestion[i][:38] + "...", 
+                                font=fontStyle, fg=self.master.color_text, bg=self.master.color_second, justify=RIGHT)
+            else:
+                label = Label(elementErrorQuestion, text=self.errorQuestion[i].ljust(38 - len(self.errorQuestion[i])), width=38, 
+                                font=fontStyle, fg=self.master.color_text, bg=self.master.color_second, justify=RIGHT)
+            
+            label.grid(row=0, column=1, padx=0, pady=20, sticky="w")

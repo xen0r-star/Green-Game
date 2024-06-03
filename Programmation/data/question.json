@@ -69,6 +69,18 @@
 				"plus de 50kg CO2/an"
 			],
 			"time": 60
+		},
+		{
+			"type": "audio1",
+			"question": "De ou provient se son ?",
+			"choices": [
+				"Ciel",
+				"Terre",
+				"Femme"
+			],
+			"answer": 3,
+			"sound": "son1.mp3",
+			"time": 60
 		}
 	]
 }

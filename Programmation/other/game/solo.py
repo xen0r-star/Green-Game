@@ -11,6 +11,7 @@ from display.quiz.click1 import displayClick1
 from display.quiz.DragAndDrop1 import displayDragAndDrop1
 from display.quiz.DragAndDrop2 import displayDragAndDrop2
 from display.quiz.DragAndDrop3 import displayDragAndDrop3
+from display.quiz.audio1 import displayAudio
 from display.score import displayScore
 
 
@@ -47,7 +48,8 @@ class solo:
             "click1": self.Click1,
             "draganddrop1": self.DragAndDrop1,
             "draganddrop2": self.DragAndDrop2,
-            "draganddrop3": self.DragAndDrop3
+            "draganddrop3": self.DragAndDrop3,
+            "audio1": self.Audio1
         }
 
         if self.currentQuestionIndex > 0:
@@ -71,69 +73,81 @@ class solo:
     
     def Choice1(self):
         self.display = displayChoice1(self.master, self.play, 
-                                            self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
-                                            self.readFile[self.randomList[self.currentQuestionIndex]]["choices"],
-                                            self.readFile[self.randomList[self.currentQuestionIndex]]["answer"], 
-                                            time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
-                                            currentQuestion=self.currentQuestionIndex + 1,
-                                            maxQuestion=len(self.listeType),
-                                            style=1)
+                                        self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
+                                        self.readFile[self.randomList[self.currentQuestionIndex]]["choices"],
+                                        self.readFile[self.randomList[self.currentQuestionIndex]]["answer"], 
+                                        time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
+                                        currentQuestion=self.currentQuestionIndex + 1,
+                                        maxQuestion=len(self.listeType),
+                                        style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
     def Choice2(self):
         self.display = displayChoice2(self.master, self.play, 
+                                        self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
+                                        self.readFile[self.randomList[self.currentQuestionIndex]]["answer"], 
+                                        time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
+                                        currentQuestion=self.currentQuestionIndex + 1,
+                                        maxQuestion=len(self.listeType),
+                                        style=1)
+        self.display.grid(row=0, column=0, sticky="nsew")
+
+    def Click1(self):
+        self.display = displayClick1(self.master, self.play, 
+                                        self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
+                                        self.readFile[self.randomList[self.currentQuestionIndex]]["answer"], 
+                                        cursorStyle=self.readFile[self.randomList[self.currentQuestionIndex]]["cursor"],
+                                        time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
+                                        currentQuestion=self.currentQuestionIndex + 1,
+                                        maxQuestion=len(self.listeType),
+                                        style=1)
+        self.display.grid(row=0, column=0, sticky="nsew")
+
+    def DragAndDrop1(self):
+        self.display = displayDragAndDrop1(self.master, self.play, 
                                             self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
-                                            self.readFile[self.randomList[self.currentQuestionIndex]]["answer"], 
+                                            self.readFile[self.randomList[self.currentQuestionIndex]]["choices"],
+                                            self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
                                             time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                             currentQuestion=self.currentQuestionIndex + 1,
                                             maxQuestion=len(self.listeType),
                                             style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
-    def Click1(self):
-        self.display = displayClick1(self.master, self.play, 
-                                           self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
-                                           self.readFile[self.randomList[self.currentQuestionIndex]]["answer"], 
-                                           cursorStyle=self.readFile[self.randomList[self.currentQuestionIndex]]["cursor"],
-                                           time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
-                                           currentQuestion=self.currentQuestionIndex + 1,
-                                           maxQuestion=len(self.listeType),
-                                           style=1)
-        self.display.grid(row=0, column=0, sticky="nsew")
-
-    def DragAndDrop1(self):
-        self.display = displayDragAndDrop1(self.master, self.play, 
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["choices"],
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
-                                                 time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
-                                                 currentQuestion=self.currentQuestionIndex + 1,
-                                                 maxQuestion=len(self.listeType),
-                                                 style=1)
-        self.display.grid(row=0, column=0, sticky="nsew")
-
     def DragAndDrop2(self):
         self.display = displayDragAndDrop2(self.master, self.play, 
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["choices"],
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["zones"],
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
-                                                 time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
-                                                 currentQuestion=self.currentQuestionIndex + 1,
-                                                 maxQuestion=len(self.listeType),
-                                                 style=1)
+                                            self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
+                                            self.readFile[self.randomList[self.currentQuestionIndex]]["choices"],
+                                            self.readFile[self.randomList[self.currentQuestionIndex]]["zones"],
+                                            self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
+                                            time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
+                                            currentQuestion=self.currentQuestionIndex + 1,
+                                            maxQuestion=len(self.listeType),
+                                            style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
     def DragAndDrop3(self):
         self.display = displayDragAndDrop3(self.master, self.play, 
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["choices"],
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["zones"],
-                                                 self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
-                                                 time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
-                                                 currentQuestion=self.currentQuestionIndex + 1,
-                                                 maxQuestion=len(self.listeType),
-                                                 style=1)
+                                            self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
+                                            self.readFile[self.randomList[self.currentQuestionIndex]]["choices"],
+                                            self.readFile[self.randomList[self.currentQuestionIndex]]["zones"],
+                                            self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
+                                            time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
+                                            currentQuestion=self.currentQuestionIndex + 1,
+                                            maxQuestion=len(self.listeType),
+                                            style=1)
+        self.display.grid(row=0, column=0, sticky="nsew")
+    
+    def Audio1(self):
+        self.display = displayAudio(self.master, self.play, 
+                                    self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
+                                    self.readFile[self.randomList[self.currentQuestionIndex]]["choices"],
+                                    self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
+                                    self.readFile[self.randomList[self.currentQuestionIndex]]["sound"],
+                                    time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
+                                    currentQuestion=self.currentQuestionIndex + 1,
+                                    maxQuestion=len(self.listeType),
+                                    style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
 

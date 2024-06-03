@@ -286,6 +286,54 @@
 						"zones",
 						"time"
 					]
+				},
+				{
+					"title": "Audio1",
+					"type": "object",
+					"properties": {
+						"type": {
+							"type": "string",
+							"enum": [
+								"audio1"
+							]
+						},
+						"question": {
+							"type": "string",
+							"maxLength": 162
+						},
+						"choices": {
+							"type": "array",
+							"maxItems": 3,
+							"minItems": 3,
+							"items": {
+								"type": "string"
+							}
+						},
+						"answer": {
+							"type": "integer",
+							"enum": [
+								1,
+								2,
+								3
+							]
+						},
+						"time": {
+							"type": "integer",
+							"minimum": 1,
+							"maximum": 6000
+						},
+						"sound": {
+							"type":"string"
+						}
+					},
+					"required": [
+						"type",
+						"question",
+						"choices",
+						"answer",
+						"sound",
+						"time"
+					]
 				}
 			]
 		}
