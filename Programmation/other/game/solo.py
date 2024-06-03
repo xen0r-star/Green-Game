@@ -1,6 +1,7 @@
 from tkinter import messagebox
 from pathlib import Path
 import random
+from logzero import logger
 
 from other.json.readJsonFile import readJsonFileSchema
 
@@ -62,7 +63,7 @@ class solo:
                 
             self.currentQuestionIndex += 1
         else:
-            print(f"End quiz, score player: {self.playerScore} ({int((self.playerScore / len(self.listeType)) * 100)})")
+            logger.info(f"End quiz, score player: {self.playerScore} ({int((self.playerScore / len(self.listeType)) * 100)})")
 
             displayScore(self.master, int((self.playerScore / len(self.listeType)) * 100))
                     
@@ -137,5 +138,6 @@ class solo:
 
 
     def error(self):
+        logger.error("Erreur 10")
         self.master.home()
         messagebox.showwarning("Erreur de lecture du fichier de données des questions", "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")

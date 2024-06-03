@@ -1,8 +1,6 @@
 from tkinter import messagebox
 from pathlib import Path
-import random
 
-from other.json.readJsonFile import readJsonFileSchema
 from other.firebase.firestore import userPoints
 
 from display.quiz.choice1 import displayChoice1
@@ -23,7 +21,8 @@ class duo:
         self.user = user
         self.token = token
 
-        self.readFile = readJsonFileSchema(paths / '../../data/question.json').get()
+        self.readFile = self.master.question
+
         if self.readFile == []:
             self.error()
         
@@ -36,9 +35,8 @@ class duo:
         self.listeType = []
         for data in self.readFile:
             self.listeType.append(data["type"])
-        
-        self.randomList = random.sample(range(0, len(self.listeType)), min(self.numberQuestion, len(self.listeType)))
 
+        self.randomList = self.master.listQuestion
         self.currentQuestionIndex = 0
         
 
@@ -145,4 +143,4 @@ class duo:
 
     def error(self):
         self.master.home()
-        messagebox.showwarning("Erreur de lecture du fichier de données des questions", "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")
+        messagebox.showwarning("Erreur 20", "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")

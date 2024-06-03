@@ -1,5 +1,7 @@
 from tkinter import *
 import ctypes as ct
+import logzero
+from logzero import logger
 from pathlib import Path
 
 from display.start import displayStart
@@ -14,6 +16,7 @@ from other.game.duo import duo
 from other.game.portail import portail
 
 paths = Path(__file__).parent.resolve()
+logzero.logfile(paths / "../logFile.log")
 
 
 
@@ -54,7 +57,7 @@ class Window(Tk):
         try:
             self.mainloop()
         except KeyboardInterrupt:
-            print("App stopped.")
+            logger.info("App stopped.")
 
     def home(self):
         self.display_start = displayStart(self)
@@ -67,8 +70,8 @@ class Window(Tk):
 
         self.display_menu = displayMenu(self)
         self.display_menu.grid(row=0, column=0, sticky="nsew")
-               
-        print("Start Game")
+
+        logger.info("Start Game")
 
 
 
@@ -79,16 +82,17 @@ class Window(Tk):
         self.display_solo = displaySolo(self)
         self.display_solo.grid(row=0, column=0, sticky="nsew")
 
-        print("Solo Game")
+        logger.info("Solo Game")
 
     def menuDuo(self):
         for content in self.display_menu.grid_slaves():
             content.grid_remove()
-        
+
+        self.question, self.listQuestion = [], []
         self.display_duo = displayDuo(self)
         self.display_duo.grid(row=0, column=0, sticky="nsew")
-               
-        print("Duo Game")
+            
+        logger.info("Duo Game")
 
     def menuPortail(self):
         for content in self.display_menu.grid_slaves():
@@ -96,8 +100,8 @@ class Window(Tk):
         
         self.display_portail = displayPortail(self)
         self.display_portail.grid(row=0, column=0, sticky="nsew")
-               
-        print("Portail Game")
+        
+        logger.info("Portail Game")
 
 
 

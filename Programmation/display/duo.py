@@ -7,8 +7,7 @@ from PIL import Image, ImageTk
 from widgets.Image import custom_Image
 from widgets.Button import custom_Button
 
-from other.firebase.firestore import createGroup, joinGroup
-from other.firebase.firestore import storageQuestion
+from other.firebase.firestore import createGroup, joinGroup, storageQuestion, loadQuestion
 from other.json.readJsonFile import readJsonFileSchema
 
 paths = Path(__file__).parent.resolve()
@@ -137,7 +136,9 @@ class displayDuo(Frame):
     def join(self, token):
         self.join_group_connexion = joinGroup(token)
         if self.join_group_connexion.report:
-            
+            self.loadQuestion = loadQuestion(token)
+            self.master.question = self.loadQuestion.question
+            self.master.listQuestion = self.loadQuestion.listQuestion
 
             self.master.startQuizDuo(1, self.entry.get(1.0, END).replace('\n', ''))
 
@@ -179,7 +180,7 @@ class displayDuo(Frame):
         self.readFile = readJsonFileSchema(paths / "../data/question.json").get()
         if self.readFile == []:
             self.error()
-    
+
         self.listeType = []
         for data in self.readFile:
             self.listeType.append(data["type"])
@@ -200,6 +201,8 @@ class displayDuo(Frame):
         
     def check_report(self):
         if self.create_group_connexion.report:
+            self.master.question = self.readFile
+            self.master.listQuestion = self.randomList
             self.master.startQuizDuo(2, self.create_group_connexion.id)
         elif not self.loopCreate:
             self.master.after(1000, self.check_report)
@@ -212,4 +215,4 @@ class displayDuo(Frame):
 
     def error(self):
         self.master.home()
-        messagebox.showwarning("Erreur de lecture du fichier de données des questions", "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")
+        messagebox.showwarning("Erreur 40", "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")

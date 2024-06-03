@@ -1,6 +1,8 @@
 from tkinter import messagebox
 from pathlib import Path
 import random
+from logzero import logger
+
 
 from other.json.readJsonFile import readJsonFileSchema
 
@@ -84,5 +86,6 @@ class portail:
         self.display.grid(row=0, column=0, sticky="nsew")
 
     def error(self):
+        logger.error("Erreur 30")
         self.master.home()
-        messagebox.showwarning("Erreur de lecture du fichier de données des questions", "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")
+        messagebox.showwarning("Erreur 30", "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")

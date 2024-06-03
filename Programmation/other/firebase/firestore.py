@@ -103,23 +103,41 @@ class storageQuestion:
             self.report = False
 
 
+
+class loadQuestion:
+    def __init__(self, token):
+        self.token = token
+        self.question, self.listQuestion = [], []
+        self.ref = db.collection('Duo').document(self.token.upper())
+        self.load()
+    
+    def load(self):
+        document = self.ref.get()
+        if document.exists:
+            data = document.to_dict()
+            self.question = data['question']
+            self.listQuestion = data['listQuestion']
+
+
+
 class userPoints:
     def __init__(self, user, token):
         self.user = user
         self.token = token
-        self.ref = db.collection('Duo').document(self.token.upper())
         
     def set(self, addPoints):
-        document = self.ref.get()
+        ref = db.collection('Duo').document(self.token.upper())
+        document = ref.get()
 
         if document.exists:
             data = document.to_dict()
             data['score'][self.user - 1] += addPoints
             
-            self.ref.set(data)
+            ref.set(data)
     
     def get(self):
-        document = self.ref.get()
+        ref = db.collection('Duo').document(self.token.upper())
+        document = ref.get()
 
         if document.exists:
             data = document.to_dict()
