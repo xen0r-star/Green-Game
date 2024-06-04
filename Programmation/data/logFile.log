@@ -1,0 +1,97 @@
+[I 240604 17:05:04 main:74] Start Game
+[I 240604 17:05:04 main:104] Portail Game
+[W 240604 17:05:06 firestore:92] Connection token not found
+[W 240604 17:05:06 firestore:92] Connection token not found
+[W 240604 17:05:07 firestore:92] Connection token not found
+[I 240604 17:05:09 main:74] Start Game
+[I 240604 17:05:09 main:95] Duo Game
+[W 240604 17:05:10 firestore:38] Connection token not found
+[I 240604 17:05:13 main:74] Start Game
+[I 240604 17:05:14 main:104] Portail Game
+[I 240604 17:05:15 main:74] Start Game
+[I 240604 17:05:15 main:85] Solo Game
+[I 240604 21:09:00 main:78] Home display
+[I 240604 21:09:01 main:92] Start Game
+[I 240604 21:09:02 main:107] Solo Game
+[E 240604 21:09:03 solo:41] Play Solo Game
+[I 240604 21:09:03 main:148] Start Solo Game
+[I 240604 21:09:13 solo:77] End quiz, score player: 0 (0)
+[I 240604 21:09:16 main:92] Start Game
+[I 240604 21:09:17 main:107] Solo Game
+[E 240604 21:09:18 solo:41] Play Solo Game
+[I 240604 21:09:18 main:148] Start Solo Game
+[I 240604 21:15:46 main:78] Home display
+[I 240604 21:15:46 main:92] Start Game
+[I 240604 21:15:47 main:107] Solo Game
+[E 240604 21:15:52 solo:41] Play Solo Game
+[I 240604 21:15:52 main:148] Start Solo Game
+[I 240604 21:16:16 solo:77] End quiz, score player: 0 (0)
+[I 240604 21:16:17 main:92] Start Game
+[I 240604 21:16:18 main:107] Solo Game
+[E 240604 21:16:19 solo:41] Play Solo Game
+[I 240604 21:16:19 main:148] Start Solo Game
+[I 240604 21:16:30 solo:77] End quiz, score player: 0 (0)
+[I 240604 21:16:32 main:92] Start Game
+[I 240604 21:16:33 main:107] Solo Game
+[E 240604 21:16:33 solo:41] Play Solo Game
+[I 240604 21:16:33 main:148] Start Solo Game
+[I 240604 21:20:20 main:78] Home display
+[I 240604 21:20:20 main:92] Start Game
+[I 240604 21:20:20 main:107] Solo Game
+[E 240604 21:20:22 solo:41] Play Solo Game
+[I 240604 21:20:22 main:148] Start Solo Game
+[I 240604 21:33:42 main:78] Home display
+[I 240604 21:33:48 main:92] Start Game
+[I 240604 21:33:50 main:107] Solo Game
+[E 240604 21:33:51 solo:41] Play Solo Game
+[I 240604 21:33:52 main:148] Start Solo Game
+[I 240604 21:35:08 solo:77] End quiz, score player: 0 (0)
+[I 240604 21:45:20 main:78] Home display
+[I 240604 21:46:11 main:92] Start Game
+[I 240604 21:46:52 main:107] Solo Game
+[I 240604 21:47:11 main:92] Start Game
+[I 240604 21:47:11 main:134] Portail Game
+[I 240604 21:47:26 main:92] Start Game
+[I 240604 21:47:27 main:121] Duo Game
+[I 240604 21:51:13 main:78] Home display
+[I 240604 21:51:20 main:78] Home display
+[I 240604 21:51:27 main:92] Start Game
+[I 240604 21:51:27 main:92] Start Game
+[I 240604 21:51:28 main:121] Duo Game
+[I 240604 21:51:28 main:121] Duo Game
+[E 240604 21:51:44 duo:42] Play Duo Game
+[I 240604 21:51:44 main:161] Start Duo Game
+[E 240604 21:51:45 duo:42] Play Duo Game
+[I 240604 21:51:45 main:161] Start Duo Game
+[I 240604 21:52:59 main:78] Home display
+[I 240604 21:53:15 main:92] Start Game
+[I 240604 21:53:16 main:107] Solo Game
+[E 240604 21:53:16 solo:41] Play Solo Game
+[I 240604 21:53:16 main:148] Start Solo Game
+[I 240604 21:53:18 solo:77] End quiz, score player: 0 (0)
+[I 240604 22:01:23 main:78] Home display
+[I 240604 22:01:30 main:92] Start Game
+[I 240604 22:01:30 main:107] Solo Game
+[I 240604 22:01:31 main:92] Start Game
+[I 240604 22:01:32 main:121] Duo Game
+[I 240604 22:01:43 main:78] Home display
+[I 240604 22:01:48 main:92] Start Game
+[I 240604 22:01:48 main:107] Solo Game
+[I 240604 22:01:49 main:92] Start Game
+[I 240604 22:01:50 main:121] Duo Game
+[E 240604 22:02:03 duo:42] Play Duo Game
+[I 240604 22:02:04 main:161] Start Duo Game
+[E 240604 22:02:04 duo:42] Play Duo Game
+[I 240604 22:02:04 main:161] Start Duo Game
+[I 240604 22:06:11 main:78] Home display
+[I 240604 22:06:13 main:78] Home display
+[I 240604 22:06:18 main:92] Start Game
+[I 240604 22:06:18 main:92] Start Game
+[I 240604 22:06:19 main:121] Duo Game
+[I 240604 22:06:19 main:121] Duo Game
+[E 240604 22:06:32 duo:42] Play Duo Game
+[E 240604 22:06:32 duo:42] Play Duo Game
+[I 240604 22:06:32 main:161] Start Duo Game
+[I 240604 22:06:32 main:161] Start Duo Game
+[I 240604 22:32:25 main:68] App stopped.
+[I 240604 22:32:26 main:68] App stopped.

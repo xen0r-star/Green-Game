@@ -8,13 +8,17 @@ from widgets.Image import custom_Image
 from widgets.Button import custom_Button
 
 from other.firebase.firestore import createGroup, joinGroup, storageQuestion, loadQuestion
-from other.json.readJsonFile import readJsonFileSchema
+from other.json.JsonFile import readJsonFileSchema
 
 paths = Path(__file__).parent.resolve()
 
 
 
 class displayDuo(Frame):
+    """
+    class de l'ecrant menu pour jouer a deux (Duo)
+    """
+
     def __init__(self, master):
         super().__init__(master)
 
@@ -29,12 +33,15 @@ class displayDuo(Frame):
 
         self.addComponents()
 
+
     def addComponents(self):
         custom_Image(self, image=paths / "../assets/Background.png", 
                      bg=self.master.color_background, 
                      width=700, height=700, 
                      column=0, columnspan=2, row=0, rowspan=3)
 
+
+        "------ Barre de navigation -------------------------------------------------------------------"
         self.navbar = Frame(self)
         self.navbar.grid(column=0, columnspan=2, row=0)
 
@@ -51,6 +58,7 @@ class displayDuo(Frame):
                       padx=(0, 20))
 
 
+        "------ Partie - Rejoindre/Crée un groupe -------------------------------------------------------------------"
         photo = ImageTk.PhotoImage(
             Image.open(paths / "../assets/duo/Join_Group2.png").resize((275, 204), Image.LANCZOS)
         )
@@ -84,6 +92,7 @@ class displayDuo(Frame):
     def join_group(self):
         self.loopCreate = True
 
+        "------ Change l'image du bouton -------------------------------------------------------------------"
         photo_join = ImageTk.PhotoImage(
             Image.open(paths / "../assets/duo/Join_Group2.png").resize((275, 204), Image.LANCZOS)
         )
@@ -99,6 +108,8 @@ class displayDuo(Frame):
         for content in self.frame.grid_slaves():
             content.grid_remove()
 
+        
+        "------ Partie - contenue de connexion au groupe -------------------------------------------------------------------"
         self.frame.grid_rowconfigure(0, weight=1)
         self.frame.grid_rowconfigure(1, weight=1)
         self.frame.grid_rowconfigure(2, weight=1)
@@ -133,6 +144,7 @@ class displayDuo(Frame):
         self.button_joined.image = photo
         self.button_joined.grid(column=0, row=2, ipadx=5, ipady=2)
     
+    "Ajout du joueur dans la base de donnée"
     def join(self, token):
         self.join_group_connexion = joinGroup(token)
         if self.join_group_connexion.report:
@@ -147,6 +159,7 @@ class displayDuo(Frame):
     def create_group(self):
         self.loopCreate = False
 
+        "------ Change l'image du bouton -------------------------------------------------------------------"
         photo_join = ImageTk.PhotoImage(
             Image.open(paths / "../assets/duo/Join_Group1.png").resize((275, 204), Image.LANCZOS)
         )
@@ -162,6 +175,8 @@ class displayDuo(Frame):
         for content in self.frame.grid_slaves():
             content.grid_remove()
 
+
+        "------ Partie - contenue de création du groupe -------------------------------------------------------------------"
         self.frame.grid_rowconfigure(0, weight=1)
         self.frame.grid_rowconfigure(1, weight=1)
 
@@ -198,7 +213,8 @@ class displayDuo(Frame):
                                  row=1, column=0)
         
         self.check_report()
-        
+    
+    "Attend une notification de la base donnée pour dire quand le joueur invité a rejoins"
     def check_report(self):
         if self.create_group_connexion.report:
             self.master.question = self.readFile
@@ -208,6 +224,8 @@ class displayDuo(Frame):
             self.master.after(1000, self.check_report)
 
 
+
+    "Centrer le texte dans le widget Text"
     def center_text(self, event):
         self.entry.tag_configure("center", justify='center')
         self.entry.tag_add("center", "1.0", "end")

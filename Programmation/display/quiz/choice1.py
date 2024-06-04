@@ -14,7 +14,12 @@ paths = Path(__file__).parent.resolve()
 
 
 class displayChoice1(Frame):
-    def __init__(self, master, callback, textQuestion, textResponse, correctResponse, style=1, playerPoint=[0, 0], time=60, currentQuestion = 0, maxQuestion=20):
+    """
+    interface du quiz Partie 2 - Jeux a la bonne reponse selon 4 proposition
+    """
+
+    def __init__(self, master, callback, textQuestion, textResponse, correctResponse, 
+                 style=1, playerPoint=[0, 0], time=60, currentQuestion = 0, maxQuestion=20):
         super().__init__(master)
         self.callback = callback
         
@@ -45,6 +50,7 @@ class displayChoice1(Frame):
 
 
     def addComponents(self):
+        "------ Style de la fenetre -------------------------------------------------------------------"
         if self.style == 2:
             background_source = paths / "../../assets/Background-red.png"
             self.master.color_background = "#CF6953"
@@ -58,6 +64,8 @@ class displayChoice1(Frame):
                      width=700, height=700, 
                      column=0, row=0, rowspan=3)
 
+
+        "------ Question -------------------------------------------------------------------"
         self.question = Frame(self, bg=self.master.color_background)
         self.question.grid(column=0, row=0)
 
@@ -75,6 +83,7 @@ class displayChoice1(Frame):
         self.header.grid(column=0, row=2, pady=(7, 0))
         
 
+        "------ Elements de la question -------------------------------------------------------------------"
         self.body = Frame(self, bg=self.master.color_background, height=325, width=620)
         self.body.grid(column=0, row=1)
 
@@ -83,6 +92,7 @@ class displayChoice1(Frame):
             self.createButton(i, self.textResponse[i], i + 1)
             
 
+        "------ Valider la réponse et numero de la question -------------------------------------------------------------------"
         custom_Button(self, 
                         command=self.validate, 
                         image=paths / "../../assets/quiz/Valider.png",
@@ -90,27 +100,21 @@ class displayChoice1(Frame):
                         bg=self.master.color_background,
                         column=0, row=2, ipadx=5, ipady=2)
         
-
         fontStyle = font.Font(size=25, weight="bold")
         self.numberQuestion = Label(self, text=self.questionNumber, compound="center", font=fontStyle, fg=self.master.color_text2, bg=self.master.color_background)
         self.numberQuestion.grid(column=0, row=2, sticky=SE, padx=20, pady=20)
 
 
-        if self.style == 2 or self.style == 3:
-            image = scoreApp().get()
+        "------ Lancer le chronometre -------------------------------------------------------------------"
+        photo = ImageTk.PhotoImage(
+            Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
+        )
+        self.header.config(image=photo)
+        self.header.image = photo
+        self.chrono = ChronoApp(self.master, self, self.header, self.time)
 
-            self.header.config(image=image)
-            self.header.image = image
 
-        else:
-            photo = ImageTk.PhotoImage(
-                Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
-            )
-            self.header.config(image=photo)
-            self.header.image = photo
-            self.chrono = ChronoApp(self.master, self, self.header, self.time)
-
-    
+    "Crée le bouton"
     def createButton(self, row, text, button_number):
         buttonBorder = Frame(self.body, bg="white")
         buttonBorder.grid(column=0, row=row, pady=7)
@@ -124,6 +128,7 @@ class displayChoice1(Frame):
         button.grid(column=0, row=0, padx=5, pady=5)
         self.button_borders.append(buttonBorder)
     
+    "Changer la couleur du bouton a son clique"
     def changeBorderColor(self, selected_border, button_number):
         for border in self.button_borders:
             border.config(bg="white")
@@ -132,6 +137,7 @@ class displayChoice1(Frame):
         self.questionNumberSelect = button_number
     
 
+    "Valider et corriger la réponse"
     def validate(self):
         if self.style != 2 and self.style != 3:
             self.chrono.stop_timer()
@@ -142,5 +148,6 @@ class displayChoice1(Frame):
         if self.callback:
             self.callback()
     
+    "Retourner le score"
     def get(self):
         return self.points

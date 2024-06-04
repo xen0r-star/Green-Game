@@ -1,5 +1,6 @@
 from tkinter import messagebox
 from pathlib import Path
+from logzero import logger
 
 from other.firebase.firestore import userPoints
 
@@ -10,12 +11,17 @@ from display.quiz.DragAndDrop1 import displayDragAndDrop1
 from display.quiz.DragAndDrop2 import displayDragAndDrop2
 from display.quiz.DragAndDrop3 import displayDragAndDrop3
 from display.quiz.audio1 import displayAudio
-
+from display.score import displayScore
 
 paths = Path(__file__).parent.resolve()
 
 
+
 class duo:
+    """
+    class qui permets de gérer le cours de la partie a deux (Duo)
+    """
+    
     def __init__(self, master, numberQuestion, user, token):
         self.numberQuestion = numberQuestion
         self.master = master
@@ -32,7 +38,10 @@ class duo:
         self.start()
         self.play()
 
+
     def start(self):
+        logger.error("Play Duo Game")
+
         self.listeType = []
         for data in self.readFile:
             self.listeType.append(data["type"])
@@ -54,6 +63,7 @@ class duo:
 
         if self.currentQuestionIndex > 0:
             self.userPoints.set(self.display.get())
+            self.playerScore += self.display.get()
 
         if self.currentQuestionIndex < len(self.randomList):
             question_type = self.listeType[self.randomList[self.currentQuestionIndex]]
@@ -65,9 +75,12 @@ class duo:
                 
             self.currentQuestionIndex += 1
         else:
-            print("End quiz")
+            logger.info(f"End quiz, score player: {self.playerScore} ({int((self.playerScore / len(self.randomList)) * 100)})")
+            displayScore(self.master, int((self.playerScore / len(self.randomList)) * 100), style=2, user=self.user, token=self.token)
                     
-    
+
+
+    "------ Fonction des different interface du quiz -------------------------------------------------------------------"
     
     def Choice1(self):
         self.display = displayChoice1(self.master, self.play, 
@@ -76,7 +89,7 @@ class duo:
                                             self.readFile[self.randomList[self.currentQuestionIndex]]["answer"], 
                                             time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                             currentQuestion=self.currentQuestionIndex + 1,
-                                            maxQuestion=len(self.listeType),
+                                            maxQuestion=len(self.randomList),
                                             playerPoint=self.userPoints.get(),
                                             style=self.user + 1)
         self.display.grid(row=0, column=0, sticky="nsew")
@@ -87,7 +100,7 @@ class duo:
                                             self.readFile[self.randomList[self.currentQuestionIndex]]["answer"], 
                                             time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                             currentQuestion=self.currentQuestionIndex + 1,
-                                            maxQuestion=len(self.listeType),
+                                            maxQuestion=len(self.randomList),
                                             playerPoint=self.userPoints.get(),
                                             style=self.user + 1)
         self.display.grid(row=0, column=0, sticky="nsew")
@@ -99,7 +112,7 @@ class duo:
                                            cursorStyle=self.readFile[self.randomList[self.currentQuestionIndex]]["cursor"],
                                            time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                            currentQuestion=self.currentQuestionIndex + 1,
-                                           maxQuestion=len(self.listeType),
+                                           maxQuestion=len(self.randomList),
                                            playerPoint=self.userPoints.get(),
                                            style=self.user + 1)
         self.display.grid(row=0, column=0, sticky="nsew")
@@ -111,7 +124,7 @@ class duo:
                                                  self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
                                                  time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                                  currentQuestion=self.currentQuestionIndex + 1,
-                                                 maxQuestion=len(self.listeType),
+                                                 maxQuestion=len(self.randomList),
                                                  playerPoint=self.userPoints.get(),
                                                  style=self.user + 1)
         self.display.grid(row=0, column=0, sticky="nsew")
@@ -124,7 +137,7 @@ class duo:
                                                  self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
                                                  time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                                  currentQuestion=self.currentQuestionIndex + 1,
-                                                 maxQuestion=len(self.listeType),
+                                                 maxQuestion=len(self.randomList),
                                                  playerPoint=self.userPoints.get(),
                                                  style=self.user + 1)
         self.display.grid(row=0, column=0, sticky="nsew")
@@ -137,7 +150,7 @@ class duo:
                                                  self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
                                                  time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                                  currentQuestion=self.currentQuestionIndex + 1,
-                                                 maxQuestion=len(self.listeType),
+                                                 maxQuestion=len(self.randomList),
                                                  playerPoint=self.userPoints.get(),
                                                  style=self.user + 1)
         self.display.grid(row=0, column=0, sticky="nsew")
@@ -150,11 +163,13 @@ class duo:
                                     self.readFile[self.randomList[self.currentQuestionIndex]]["sound"],
                                     time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                     currentQuestion=self.currentQuestionIndex + 1,
-                                    maxQuestion=len(self.listeType),
+                                    maxQuestion=len(self.randomList),
                                     style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
 
     def error(self):
+        logger.error("Erreur 20")
         self.master.home()
-        messagebox.showwarning("Erreur 20", "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")
+        messagebox.showwarning("Erreur 20", 
+                               "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")

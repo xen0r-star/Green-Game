@@ -9,6 +9,10 @@ paths = Path(__file__).parent.resolve()
 
 
 class displayMenu(Frame):
+    """
+    class de l'ecrant menu (solo, duo, portail)
+    """
+
     def __init__(self, master):
         super().__init__(master)
         self.config(bg=self.master.color_background)
@@ -22,11 +26,12 @@ class displayMenu(Frame):
         
         self.addComponents()
 
+
     def addComponents(self):
         custom_Image(self, image=paths / "../assets/Background.png", bg=self.master.color_background, width=700, height=700, column=0, columnspan=2, row=0, rowspan=3)
 
         custom_Image(self, image=paths / "../assets/Logo.png", bg=self.master.color_background, width=571, height=82, column=0, columnspan=2, row=0)
-
+    
         custom_Button(self, 
                         command=self.master.menuSolo, 
                         image=paths / "../assets/menu/Solo.png",

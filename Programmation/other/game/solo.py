@@ -3,7 +3,7 @@ from pathlib import Path
 import random
 from logzero import logger
 
-from other.json.readJsonFile import readJsonFileSchema
+from other.json.JsonFile import readJsonFileSchema
 
 from display.quiz.choice1 import displayChoice1
 from display.quiz.choice2 import displayChoice2
@@ -14,15 +14,20 @@ from display.quiz.DragAndDrop3 import displayDragAndDrop3
 from display.quiz.audio1 import displayAudio
 from display.score import displayScore
 
-
 paths = Path(__file__).parent.resolve()
 
 
+
 class solo:
+    """
+    class qui permets de gérer le cours de la partie seule (Solo)
+    """
+
     def __init__(self, master, numberQuestion):
         self.numberQuestion = numberQuestion
         self.master = master
         self.playerScore = 0
+        self.errorQuestion = []
 
         self.readFile = readJsonFileSchema(paths / '../../data/question.json').get()
         if self.readFile == []:
@@ -31,13 +36,15 @@ class solo:
         self.start()
         self.play()
 
+
     def start(self):
+        logger.error("Play Solo Game")
+
         self.listeType = []
         for data in self.readFile:
             self.listeType.append(data["type"])
         
         self.randomList = random.sample(range(0, len(self.listeType)), min(self.numberQuestion, len(self.listeType)))
-
         self.currentQuestionIndex = 0
         
 
@@ -54,6 +61,8 @@ class solo:
 
         if self.currentQuestionIndex > 0:
             self.playerScore += self.display.get()
+            if self.display.get() <= 0:
+                self.errorQuestion.append(self.readFile[self.randomList[self.currentQuestionIndex - 1]]["question"])
 
         if self.currentQuestionIndex < len(self.randomList):
             question_type = self.listeType[self.randomList[self.currentQuestionIndex]]
@@ -65,12 +74,11 @@ class solo:
                 
             self.currentQuestionIndex += 1
         else:
-            logger.info(f"End quiz, score player: {self.playerScore} ({int((self.playerScore / len(self.listeType)) * 100)})")
-
-            displayScore(self.master, int((self.playerScore / len(self.listeType)) * 100))
+            logger.info(f"End quiz, score player: {self.playerScore} ({int((self.playerScore / len(self.randomList)) * 100)})")
+            displayScore(self.master, int((self.playerScore / len(self.randomList)) * 100), self.errorQuestion)
                     
     
-    
+    "------ Fonction des different interface du quiz -------------------------------------------------------------------"
     def Choice1(self):
         self.display = displayChoice1(self.master, self.play, 
                                         self.readFile[self.randomList[self.currentQuestionIndex]]["question"],
@@ -78,7 +86,7 @@ class solo:
                                         self.readFile[self.randomList[self.currentQuestionIndex]]["answer"], 
                                         time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                         currentQuestion=self.currentQuestionIndex + 1,
-                                        maxQuestion=len(self.listeType),
+                                        maxQuestion=len(self.randomList),
                                         style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
@@ -88,7 +96,7 @@ class solo:
                                         self.readFile[self.randomList[self.currentQuestionIndex]]["answer"], 
                                         time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                         currentQuestion=self.currentQuestionIndex + 1,
-                                        maxQuestion=len(self.listeType),
+                                        maxQuestion=len(self.randomList),
                                         style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
@@ -99,7 +107,7 @@ class solo:
                                         cursorStyle=self.readFile[self.randomList[self.currentQuestionIndex]]["cursor"],
                                         time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                         currentQuestion=self.currentQuestionIndex + 1,
-                                        maxQuestion=len(self.listeType),
+                                        maxQuestion=len(self.randomList),
                                         style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
@@ -110,7 +118,7 @@ class solo:
                                             self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
                                             time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                             currentQuestion=self.currentQuestionIndex + 1,
-                                            maxQuestion=len(self.listeType),
+                                            maxQuestion=len(self.randomList),
                                             style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
@@ -122,7 +130,7 @@ class solo:
                                             self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
                                             time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                             currentQuestion=self.currentQuestionIndex + 1,
-                                            maxQuestion=len(self.listeType),
+                                            maxQuestion=len(self.randomList),
                                             style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
@@ -134,7 +142,7 @@ class solo:
                                             self.readFile[self.randomList[self.currentQuestionIndex]]["answer"],
                                             time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                             currentQuestion=self.currentQuestionIndex + 1,
-                                            maxQuestion=len(self.listeType),
+                                            maxQuestion=len(self.randomList),
                                             style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
     
@@ -146,7 +154,7 @@ class solo:
                                     self.readFile[self.randomList[self.currentQuestionIndex]]["sound"],
                                     time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                     currentQuestion=self.currentQuestionIndex + 1,
-                                    maxQuestion=len(self.listeType),
+                                    maxQuestion=len(self.randomList),
                                     style=1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
@@ -154,4 +162,5 @@ class solo:
     def error(self):
         logger.error("Erreur 10")
         self.master.home()
-        messagebox.showwarning("Erreur de lecture du fichier de données des questions", "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")
+        messagebox.showwarning("Erreur de lecture du fichier de données des questions", 
+                               "Une erreur s'est produite lors de la lecture du fichier de données des questions. Le fichier est peut être mal écrit, contient des erreurs ou est vide.")

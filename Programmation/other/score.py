@@ -4,7 +4,12 @@ from pathlib import Path
 paths = Path(__file__).parent.resolve()
 
 
+
 class scoreApp:
+    """
+    class utiliser pour les partie a deux (Duo), elle sert a faire l'element de score quand ou joue a deux
+    """
+    
     def __init__(self, score = [0, 0]):
         self.rouge = (148, 3, 3)
         self.bleu = (3, 3, 148)
@@ -25,10 +30,12 @@ class scoreApp:
                 self.percentageRed = int(redScore)
         
         self.image = self.create_image()
+        
 
     def create_image(self):
         image = Image.new('RGBA', (self.width, self.height), (0, 0, 0, 0))
 
+        "------ Partie - Image rouge -------------------------------------------------------------------"
         redImage = Image.new('RGB', (int(self.width * (self.percentageRed / 100)), self.height), self.rouge)
         redMask = Image.new('L', (int(self.width * (self.percentageRed / 100)), self.height), 0)
         draw = ImageDraw.Draw(redMask)
@@ -45,8 +52,9 @@ class scoreApp:
                        2 * self.rayon, self.height), 
                        90, 180, fill=255)
         redImage.putalpha(redMask)
+        
 
-
+        "------ Partie - Image bleu -------------------------------------------------------------------"
         blueImage = Image.new('RGB', (int(self.width * (1 - (self.percentageRed / 100))), self.height), self.bleu)
         blueMask = Image.new('L', (int(self.width * (1 - (self.percentageRed / 100))), self.height), 0)
         draw = ImageDraw.Draw(blueMask)
@@ -64,9 +72,10 @@ class scoreApp:
                        0, 90, fill=255)
         blueImage.putalpha(blueMask)
 
+
+        "------ Partie - Fusionne Image -------------------------------------------------------------------"
         image.paste(redImage, (0, 0), redImage)
         image.paste(blueImage, (int(self.width * (self.percentageRed / 100)), 0), blueImage)
-
 
         borderImage = Image.open(paths / "../assets/quiz/Frame1.png")
 

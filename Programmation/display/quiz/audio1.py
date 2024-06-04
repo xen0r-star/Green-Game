@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import font, messagebox
 import pygame
+from logzero import logger
 from PIL import Image, ImageTk, ImageDraw
 from pathlib import Path
 
@@ -15,7 +16,11 @@ paths = Path(__file__).parent.resolve()
 
 
 class displayAudio(Frame):
-    def __init__(self, master, callback, textQuestion, textResponse, correctResponse, audioFile, style=1, playerPoint=[0, 0], time=60, currentQuestion = 0, maxQuestion=20):
+    """
+    interface du quiz Partie 1 - Jeux a retourver le sens du son
+    """
+    def __init__(self, master, callback, textQuestion, textResponse, correctResponse, audioFile, 
+                 style=1, playerPoint=[0, 0], time=60, currentQuestion = 0, maxQuestion=20):
         super().__init__(master)
         self.callback = callback
         
@@ -47,6 +52,7 @@ class displayAudio(Frame):
 
 
     def addComponents(self):
+        "------ Style de la fenetre -------------------------------------------------------------------"
         if self.style == 2:
             background_source = paths / "../../assets/Background-red.png"
             self.master.color_background = "#CF6953"
@@ -60,6 +66,8 @@ class displayAudio(Frame):
                      width=700, height=700, 
                      column=0, row=0, rowspan=3)
 
+
+        "------ Question -------------------------------------------------------------------"
         self.question = Frame(self, bg=self.master.color_background)
         self.question.grid(column=0, row=0)
 
@@ -77,7 +85,7 @@ class displayAudio(Frame):
         self.header.grid(column=0, row=1, pady=(7, 0))
         
 
-
+        "------ Elements de la question -------------------------------------------------------------------"
         self.body = Frame(self, bg=self.master.color_background, height=325, width=620)
         self.body.grid(column=0, row=1)
 
@@ -111,40 +119,34 @@ class displayAudio(Frame):
         self.buttonPlay.image = photo
         self.buttonPlay.grid(row=0, column=2, padx=10)
 
-
         self.button_borders = []
         for i in range(3):
             self.createButton(i + 1, self.textResponse[i], i + 1)
             
 
+        "------ Valider la réponse et numero de la question -------------------------------------------------------------------"
         custom_Button(self, 
                         command=self.validate, 
                         image=paths / "../../assets/quiz/Valider.png",
                         height=75, width=343,
                         bg=self.master.color_background,
                         column=0, row=2, ipadx=5, ipady=2)
-        
 
         fontStyle = font.Font(size=25, weight="bold")
         self.numberQuestion = Label(self, text=self.questionNumber, compound="center", font=fontStyle, fg=self.master.color_text2, bg=self.master.color_background)
         self.numberQuestion.grid(column=0, row=2, sticky=SE, padx=20, pady=20)
 
 
-        if self.style == 2 or self.style == 3:
-            image = scoreApp().get()
-
-            self.header.config(image=image)
-            self.header.image = image
-
-        else:
-            photo = ImageTk.PhotoImage(
-                Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
-            )
-            self.header.config(image=photo)
-            self.header.image = photo
-            self.chrono = ChronoApp(self.master, self, self.header, self.time)
+        "------ Lancer le chronometre -------------------------------------------------------------------"
+        photo = ImageTk.PhotoImage(
+            Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
+        )
+        self.header.config(image=photo)
+        self.header.image = photo
+        self.chrono = ChronoApp(self.master, self, self.header, self.time)
 
 
+    "Mettre Play et Pause au son"
     def play_pause(self):
         if self.buttonPlayStat == "Start":
             self.buttonPlayStat = "Play"
@@ -178,6 +180,8 @@ class displayAudio(Frame):
             self.buttonPlay.config(image=photo)
             self.buttonPlay.image = photo
     
+
+    "Charger et démarer le son"
     def start_sound(self):
         try:
             pygame.mixer.init()
@@ -188,6 +192,8 @@ class displayAudio(Frame):
         except pygame.error as _:
             self.error()
     
+
+    "Mettre a jour la barre de progression"
     def update_progress(self):
         try:
             self.current_time = int(pygame.mixer.music.get_pos() // 1000 % self.totalTimeSound)
@@ -204,6 +210,8 @@ class displayAudio(Frame):
         except pygame.error as e:
             self.error()
 
+
+    "Faire l'image de la barre de progression"
     def timeBar(self, current, total):
         image = Image.new("RGBA", (420, 10), "#ffffff00")
         draw = ImageDraw.Draw(image)
@@ -228,7 +236,7 @@ class displayAudio(Frame):
         return image
 
 
-    
+    "Crée le bouton"
     def createButton(self, row, text, button_number):
         buttonBorder = Frame(self.body, bg="white")
         buttonBorder.grid(column=0, row=row, pady=7)
@@ -242,6 +250,7 @@ class displayAudio(Frame):
         button.grid(column=0, row=0, padx=5, pady=5)
         self.button_borders.append(buttonBorder)
     
+    "Changer la couleur du bouton a son clique"
     def changeBorderColor(self, selected_border, button_number):
         for border in self.button_borders:
             border.config(bg="white")
@@ -250,6 +259,7 @@ class displayAudio(Frame):
         self.questionNumberSelect = button_number
     
 
+    "Valider et corriger la réponse"
     def validate(self):
         if self.style != 2 and self.style != 3:
             self.chrono.stop_timer()
@@ -260,10 +270,13 @@ class displayAudio(Frame):
         if self.callback:
             self.callback()
     
+    "Retourner le score"
     def get(self):
         return self.points
 
+
     def error(self):
+        logger.error("Erreur 50")
         self.master.home()
         messagebox.showwarning("Erreur 50", "Une erreur s'est produite lors de la lecture du fichier audio")
 

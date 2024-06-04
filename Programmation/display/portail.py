@@ -7,12 +7,17 @@ from widgets.Image import custom_Image
 from widgets.Button import custom_Button
 
 from other.firebase.firestore import connexionPortail
+from other.json.JsonFile import readJsonFile
 
 paths = Path(__file__).parent.resolve()
 
 
 
 class displayPortail(Frame):
+    """
+    class de l'ecrant menu pour jouer avec le portail (Portail)
+    """
+
     def __init__(self, master):
         super().__init__(master)
 
@@ -25,15 +30,38 @@ class displayPortail(Frame):
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
 
+        "------ Charger les donnée du meilleure score -------------------------------------------------------------------"
+        fileData = readJsonFile(paths / "../data/data.json").get()
+        try:
+            if len(fileData["score"]) > 0:
+                bestScore = 0
+                for i in range(len(fileData["score"])):
+                    if bestScore <=  fileData["score"][i]["score"]:
+                        bestScore = fileData["score"][i]["score"]
+                        try:
+                            self.userName = fileData["score"][i]["name"]
+                        except:
+                            self.userName = "Inconnue"
+
+                        self.userScore = fileData["score"][i]["score"]
+            else:
+                self.userName = "Inconnue"
+                self.userScore = 0
+        except:
+            self.userName = "Inconnue"
+            self.userScore = 0
+
         self.addComponents()
+
 
     def addComponents(self):
         custom_Image(self, image=paths / "../assets/Background.png", 
                      bg=self.master.color_background, 
                      width=700, height=700, 
-                     column=0, columnspan=2, row=0, rowspan=3)
+                     column=0, columnspan=2, row=0, rowspan=4)
 
 
+        "------ Barre de navigation -------------------------------------------------------------------"
         self.navbar = Frame(self)
         self.navbar.grid(column=0, columnspan=2, row=0)
 
@@ -50,8 +78,38 @@ class displayPortail(Frame):
                       padx=(0, 20))
 
 
+        "------ Partie - Meilleure score -------------------------------------------------------------------"
+        self.score = Frame(self)
+        self.score.grid(column=0, row=1, columnspan=2, sticky=S)
+        self.score.grid_columnconfigure(0, weight=1)
+        self.score.grid_columnconfigure(1, weight=1)
+        self.score.grid_columnconfigure(2, weight=15)
+
+        custom_Image(self.score, image=paths / "../assets/Frame1.png", 
+                     bg=self.master.color_background, 
+                     height=84, width=571, 
+                     column=0, row=0, columnspan=3)
+
+        custom_Image(self.score, image=paths / "../assets/solo/Trophy.png",
+                     bg=self.master.color_second,
+                     width=50, height=50, 
+                     column=0, row=0, 
+                     sticky=W, padx=(20, 0))
+        
+        fontStyle = font.Font(size=22)
+        self.name = Label(self.score, text=self.userName, font=fontStyle, 
+                          bg=self.master.color_second, fg=self.master.color_text)
+        self.name.grid(column=1, row=0)
+
+        fontStyle = font.Font(size=30, weight="bold")
+        self.percentage = Label(self.score, text=str(self.userScore) + "%", font=fontStyle, 
+                                bg=self.master.color_second, fg=self.master.color_text)
+        self.percentage.grid(column=2, row=0, sticky=E, padx=(0, 20))
+
+
+        "------ Partie - Connexion portails -------------------------------------------------------------------"
         self.frame = Frame(self)
-        self.frame.grid(column=0, columnspan=2, row=1)
+        self.frame.grid(column=0, columnspan=2, row=2)
 
         custom_Image(self.frame, image=paths / "../assets/Frame3.png", 
                      bg=self.master.color_background, 
@@ -83,12 +141,14 @@ class displayPortail(Frame):
         self.button_connexion.image = photo
         self.button_connexion.grid(column=0, row=2, ipadx=5, ipady=2)
     
+    
+    "Centrer le texte dans le widget Text"
+    def center_text(self, event):
+        self.entry.tag_configure("center", justify='center')
+        self.entry.tag_add("center", "1.0", "end")
+
 
     def connexion(self, token):
         self.join_group_connexion = connexionPortail(token)
         if self.join_group_connexion.report:
             self.master.startQuizPortail()
-
-    def center_text(self, event):
-        self.entry.tag_configure("center", justify='center')
-        self.entry.tag_add("center", "1.0", "end")

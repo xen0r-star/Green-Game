@@ -14,7 +14,12 @@ paths = Path(__file__).parent.resolve()
 
 
 class displayDragAndDrop3(Frame):
-    def __init__(self, master, callback, textQuestion, imageResponse, textZones, correctResponse, style=1, playerPoint=[0, 0], time=60, currentQuestion = 0, maxQuestion=20):
+    """
+    interface du quiz Partie 7 - Jeux a replacer les image dans la bonne catégorie
+    """
+
+    def __init__(self, master, callback, textQuestion, imageResponse, textZones, correctResponse, 
+                 style=1, playerPoint=[0, 0], time=60, currentQuestion = 0, maxQuestion=20):
         super().__init__(master)
         self.callback = callback
         
@@ -44,7 +49,9 @@ class displayDragAndDrop3(Frame):
         
         self.addComponents()
 
+
     def addComponents(self):
+        "------ Style de la fenetre -------------------------------------------------------------------"
         if self.style == 2:
             background_source = paths / "../../assets/Background-red.png"
             self.master.color_background = "#CF6953"
@@ -53,11 +60,13 @@ class displayDragAndDrop3(Frame):
             self.master.color_background = "#53B1CF"
         else:
             background_source = paths / "../../assets/Background.png"
-
+        
         custom_Image(self, image=background_source, bg=self.master.color_background, 
                      width=700, height=700, 
                      column=0, row=0, rowspan=3)
 
+
+        "------ Question -------------------------------------------------------------------"
         self.question = Frame(self, bg=self.master.color_background)
         self.question.grid(column=0, row=0)
 
@@ -75,6 +84,7 @@ class displayDragAndDrop3(Frame):
         self.header.grid(column=0, row=2, pady=(7, 0))
         
 
+        "------ Elements de la question -------------------------------------------------------------------"
         self.body = Frame(self, bg=self.master.color_background, height=325, width=620)
         self.body.grid(column=0, row=1)
 
@@ -106,6 +116,7 @@ class displayDragAndDrop3(Frame):
 
 
 
+        "------ Valider la réponse et numero de la question -------------------------------------------------------------------"
         custom_Button(self, 
                         command=self.validate, 
                         image=paths / "../../assets/quiz/Valider.png",
@@ -113,29 +124,25 @@ class displayDragAndDrop3(Frame):
                         bg=self.master.color_background,
                         column=0, row=2, ipadx=5, ipady=2)
         
-
         fontStyle = font.Font(size=25, weight="bold")
         self.numberQuestion = Label(self, text=self.questionNumber, compound="center", font=fontStyle, fg=self.master.color_text2, bg=self.master.color_background)
         self.numberQuestion.grid(column=0, row=2, sticky=SE, padx=20, pady=20)
 
 
-        if self.style == 2 or self.style == 3:
-            image = scoreApp().get()
+        "------ Lancer le chronometre -------------------------------------------------------------------"
+        photo = ImageTk.PhotoImage(
+            Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
+        )
+        self.header.config(image=photo)
+        self.header.image = photo
+        self.chrono = ChronoApp(self.master, self, self.header, self.time)
 
-            self.header.config(image=image)
-            self.header.image = image
 
-        else:
-            photo = ImageTk.PhotoImage(
-                Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
-            )
-            self.header.config(image=photo)
-            self.header.image = photo
-            self.chrono = ChronoApp(self.master, self, self.header, self.time)
-
+    "Retourner la position"
     def callbackPosition(self, responce):
         self.response = responce
 
+    "Valider et corriger la réponse"
     def validate(self):
         if self.style != 2 and self.style != 3:
             self.chrono.stop_timer()
@@ -163,6 +170,7 @@ class displayDragAndDrop3(Frame):
         if self.callback:
             self.callback()
 
+    "Retourner le score"
     def get(self):
         return self.points
             
@@ -170,6 +178,10 @@ class displayDragAndDrop3(Frame):
 
 
 class DragDrop:
+    """
+    Permet le mouvements des éléments
+    """
+    
     def __init__(self, canvas, item, rect_id, response, callbackPosition):
         self.canvas = canvas
         self.item = item

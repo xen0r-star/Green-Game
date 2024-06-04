@@ -16,7 +16,7 @@ from other.game.duo import duo
 from other.game.portail import portail
 
 paths = Path(__file__).parent.resolve()
-logzero.logfile(paths / "../logFile.log")
+logzero.logfile(paths / "./data/logFile.log")
 
 
 
@@ -38,6 +38,10 @@ class Window(Tk):
 
 
     def titleBar(self):
+        """
+        Changer la couleur de la barre windows en haut
+        """
+        
         self.update()
         DWMWA_USE_IMMERSIVE_DARK_MODE = 20
         set_window_attribute = ct.windll.dwmapi.DwmSetWindowAttribute
@@ -49,6 +53,10 @@ class Window(Tk):
         set_window_attribute(hwnd, rendering_policy, ct.byref(value), ct.sizeof(value))
 
     def display(self):
+        """
+        function principale qui va lancer l'affichage de la premier fenetre et lancer le programme
+        """
+
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
@@ -60,11 +68,21 @@ class Window(Tk):
             logger.info("App stopped.")
 
     def home(self):
+        """
+        lance la class de l'ecrant principale avec l'animation du model
+        """
+
         self.display_start = displayStart(self)
         self.display_start.grid(row=0, column=0, sticky="nsew")
 
+        logger.info("Home display")
+
 
     def startGame(self):
+        """
+        lance la class de l'ecrant menu (solo, duo, portail)
+        """
+
         for content in self.display_start.grid_slaves():
             content.grid_remove()
 
@@ -76,6 +94,10 @@ class Window(Tk):
 
 
     def menuSolo(self):
+        """
+        lance la class de l'ecrant menu pour jouer seul (Solo)
+        """
+
         for content in self.display_menu.grid_slaves():
             content.grid_remove()
         
@@ -85,6 +107,10 @@ class Window(Tk):
         logger.info("Solo Game")
 
     def menuDuo(self):
+        """
+        lance la class de l'ecrant menu pour jouer a deux (Duo)
+        """
+
         for content in self.display_menu.grid_slaves():
             content.grid_remove()
 
@@ -95,6 +121,10 @@ class Window(Tk):
         logger.info("Duo Game")
 
     def menuPortail(self):
+        """
+        lance la class de l'ecrant menu pour jouer avec le portail (Portail)
+        """
+
         for content in self.display_menu.grid_slaves():
             content.grid_remove()
         
@@ -106,24 +136,42 @@ class Window(Tk):
 
 
     def startQuizSolo(self, numberQuestion=20):
+        """
+        lance la class qui va demerarer le jeux seul (Solo)
+        """
+
         for content in self.grid_slaves():
             content.grid_remove()
 
         solo(self, numberQuestion)
+
+        logger.info("Start Solo Game")
     
 
     def startQuizDuo(self, user, token):
+        """
+        lance la class qui va demarrer le jeux a deux (Duo)
+        """
+
         for content in self.grid_slaves():
             content.grid_remove()
 
         duo(self, 20, user, token)
 
+        logger.info("Start Duo Game")
+
 
     def startQuizPortail(self):
+        """
+        lance la class qui va demarrer le jeux avec le portail (Portail)
+        """
+
         for content in self.grid_slaves():
             content.grid_remove()
 
         portail(self, 20)
+
+        logger.info("Start Portail Game")
 
 
 

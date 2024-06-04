@@ -1,4 +1,8 @@
 class ChronoApp:
+    """
+    class utiliser pour les partie seul et avec le portail (Solo, Portail), elle sert a faire l'element chronomettre quand ou joue a deux
+    """
+    
     def __init__(self, main, master, label, time):
         self.main = main
         self.master = master

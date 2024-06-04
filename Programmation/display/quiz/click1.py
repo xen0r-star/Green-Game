@@ -14,7 +14,12 @@ paths = Path(__file__).parent.resolve()
 
 
 class displayClick1(Frame):
-    def __init__(self, master, callback, textQuestion, correctResponse, style=1, playerPoint=[0, 0], time=60, currentQuestion = 0, maxQuestion=20, cursorStyle=1):
+    """
+    interface du quiz Partie 4 - Jeux a trouver l'endroit sur la carte du monde
+    """
+
+    def __init__(self, master, callback, textQuestion, correctResponse, 
+                 style=1, playerPoint=[0, 0], time=60, currentQuestion = 0, maxQuestion=20, cursorStyle=1):
         super().__init__(master)
         self.callback = callback
         
@@ -44,7 +49,9 @@ class displayClick1(Frame):
         
         self.addComponents()
 
+
     def addComponents(self):
+        "------ Style de la fenetre -------------------------------------------------------------------"
         if self.style == 2:
             background_source = paths / "../../assets/Background-red.png"
             self.master.color_background = "#CF6953"
@@ -58,6 +65,8 @@ class displayClick1(Frame):
                      width=700, height=700, 
                      column=0, row=0, rowspan=3)
 
+
+        "------ Question -------------------------------------------------------------------"
         self.question = Frame(self, bg=self.master.color_background)
         self.question.grid(column=0, row=0)
 
@@ -75,6 +84,7 @@ class displayClick1(Frame):
         self.header.grid(column=0, row=2, pady=(7, 0))
         
 
+        "------ Elements de la question -------------------------------------------------------------------"
         self.body = Frame(self, bg=self.master.color_background, height=325, width=620)
         self.body.grid(column=0, row=1)
 
@@ -85,6 +95,7 @@ class displayClick1(Frame):
         self.canvas.bind("<Button-1>", self.on_click)
 
 
+        "------ Valider la réponse et numero de la question -------------------------------------------------------------------"
         custom_Button(self, 
                         command=self.validate, 
                         image=paths / "../../assets/quiz/Valider.png",
@@ -92,12 +103,12 @@ class displayClick1(Frame):
                         bg=self.master.color_background,
                         column=0, row=2, ipadx=5, ipady=2)
         
-
         fontStyle = font.Font(size=25, weight="bold")
         self.numberQuestion = Label(self, text=self.questionNumber, compound="center", font=fontStyle, fg=self.master.color_text2, bg=self.master.color_background)
         self.numberQuestion.grid(column=0, row=2, sticky=SE, padx=20, pady=20)
 
-
+        
+        "------ Lancer le chronometre -------------------------------------------------------------------"
         if self.style == 2 or self.style == 3:
             image = scoreApp().get()
 
@@ -112,6 +123,8 @@ class displayClick1(Frame):
             self.header.image = photo
             self.chrono = ChronoApp(self.master, self, self.header, self.time)
     
+
+    "Savoir quand et ou as cliqué l'utilisateur"
     def on_click(self, event):
         x, y = event.x, event.y
         self.responseDistance = [x, y]
@@ -138,7 +151,8 @@ class displayClick1(Frame):
                 image=self.image, tags="circle"
             )
     
-    
+
+    "Valider et corriger la réponse"
     def validate(self):
         if self.style != 2 and self.style != 3:
             self.chrono.stop_timer()
@@ -153,5 +167,6 @@ class displayClick1(Frame):
         if self.callback:
             self.callback()
 
+    "Retourner le score"
     def get(self):
         return self.points

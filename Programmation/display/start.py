@@ -13,6 +13,10 @@ paths = Path(__file__).parent.resolve()
 
 
 class displayStart(Frame):
+    """
+    class de l'ecrant principale avec l'animation du model
+    """
+
     def __init__(self, master):
         super().__init__(master)
 
@@ -36,6 +40,7 @@ class displayStart(Frame):
     def addComponents(self):
         custom_Image(self, image=paths / "../assets/Background.png", bg=self.master.color_background, width=700, height=700, column=0, row=0, rowspan=3)
 
+        "------ Video -------------------------------------------------------------------"
         self.canvas = Canvas(self, height=self.canvas_height, width=self.canvas_width, bg=self.master.color_second, highlightthickness=self.canvas_border, highlightbackground="white")
         self.canvas.grid(column=0, row=0, padx=10, pady=10)
         
@@ -44,6 +49,8 @@ class displayStart(Frame):
         self.video_height = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         self.ratio = min(self.canvas_width / self.video_width, self.canvas_height / self.video_height)
         
+        
+        "------ Bouton -------------------------------------------------------------------"
         custom_Button(self, 
                         command=self.master.startGame, 
                         text="J O U E R", font=font.Font(size=30, weight="bold"),
@@ -63,6 +70,7 @@ class displayStart(Frame):
         self.update_frame()
     
 
+    "Faire la mise a jour de l'image (Frame par Frame)"
     def update_frame(self):
         ret, frame = self.cap.read()
         if ret:

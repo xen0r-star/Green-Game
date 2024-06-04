@@ -1,7 +1,14 @@
 from tkinter import *
 from PIL import Image, ImageTk
 
+
+
 class custom_Image(Frame):
+    """
+    class pour un widget custom Image, c'est un labels ou on va mettre une image dedans
+    sa permets de ne pas devoir refaire plusieur fois se code qui est tres souvent utiliser pour mettre des image dans le programme
+    """
+    
     def __init__(self, parent, image, text="", font = None, fg = None, bg = None, width = 100, height = 100, sticky=None, wraplength=None, rowspan=1, columnspan=1 , column=0, row=0, padx=0, pady=0, ipadx=0, ipady=0, **kwargs):
         super().__init__(parent, bg=bg, **kwargs)
         self.parent = parent

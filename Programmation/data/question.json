@@ -22,7 +22,7 @@
 			"type": "click1",
 			"question": "Quelle est la zone la plus polluée par les voitures ?",
 			"answer": [322, 73],
-			"cursor": 2,
+			"cursor": 1,
 			"time": 60
 		},
 		{
@@ -36,22 +36,6 @@
 				"Les matériaux sont triés par type."
 			],
 			"answer": [4, 2, 5, 1, 3],
-			"time": 60
-		},
-		{
-			"type": "draganddrop2",
-			"question": "Replace les éléments dans leurs bonnes catégories.",
-			"choices": [
-				"Vélo",
-				"Bateau",
-				"Avion",
-				"Voiture"
-			],
-			"answer": [1, 2, 2, 1],
-			"zones": [
-				"moin de 50kg CO2/an", 
-				"plus de 50kg CO2/an"
-			],
 			"time": 60
 		},
 		{
@@ -71,16 +55,198 @@
 			"time": 60
 		},
 		{
-			"type": "audio1",
-			"question": "De ou provient se son ?",
+			"type": "choice1",
+			"question": "Quel est le rôle des batteries à l'état solide dans l'avenir des véhicules électriques?",
 			"choices": [
-				"Ciel",
-				"Terre",
-				"Femme"
+				"Augmenter l'autonomie",
+				"Réduire le poids des véhicules",
+				"Accélérer les temps de charge",
+				"Toutes les réponses ci-dessus"
 			],
-			"answer": 3,
-			"sound": "son1.mp3",
-			"time": 60
+			"answer": 4,
+			"time": 120
+		},
+		{
+			"type": "choice1",
+			"question": "Quel est le principal défi technique pour les véhicules à hydrogène?",
+			"choices": [
+				"Stockage de l'hydrogène",
+				"Production de l'hydrogène",
+				"Distribution de l'hydrogène",
+				"Tous les défis mentionnés"
+			],
+			"answer": 4,
+			"time": 120
+		},
+		{
+			"type": "choice2",
+			"question": "Les véhicules hybrides rechargeables peuvent-ils fonctionner uniquement sur l'électricité pour de courts trajets?",
+			"answer": true,
+			"time": 90
+		},
+		{
+			"type": "click1",
+			"question": "Cliquez sur le pays qui a la plus grande densité de stations de recharge pour véhicules électriques.",
+			"answer": [332, 77],
+			"cursor": 1,
+			"time": 90
+		},
+		{
+			"type": "draganddrop1",
+			"question": "Classez ces sources d'énergie pour les véhicules selon leur efficacité énergétique (du plus au moins efficace).",
+			"choices": [
+				"Électricité",
+				"Hydrogène",
+				"Biocarburant",
+				"Essence",
+				"Gaz naturel"
+			],
+			"answer": [1, 2, 5, 3, 4],
+			"time": 120
+		},
+		{
+			"type": "choice1",
+			"question": "Quel est le rôle des stations de recharge rapide dans l'adoption des véhicules électriques?",
+			"choices": [
+				"Réduire le temps de recharge",
+				"Augmenter la portée des voyages",
+				"Encourager l'adoption des VE",
+				"Toutes les réponses ci-dessus"
+			],
+			"answer": 4,
+			"time": 120
+		},
+		{
+			"type": "choice1",
+			"question": "Quel pays investit le plus dans les infrastructures de recharge des véhicules électriques?",
+			"choices": [
+				"États-Unis",
+				"Chine",
+				"Allemagne",
+				"Japon"
+			],
+			"answer": 2,
+			"time": 120
+		},
+		{
+			"type": "choice2",
+			"question": "Les véhicules à hydrogène produisent-ils de l'eau comme sous-produit?",
+			"answer": true,
+			"time": 90
+		},
+		{
+			"type": "click1",
+			"question": "Cliquez sur la région du monde où les ventes de véhicules électriques ont le plus augmenté en 2023.",
+			"answer": [490, 94],
+			"cursor": 1,
+			"time": 90
+		},
+		{
+			"type": "draganddrop1",
+			"question": "Classez ces constructeurs automobiles selon leur part de marché en véhicules électriques (du plus au moins).",
+			"choices": [
+				"Tesla",
+				"Nissan",
+				"BMW",
+				"Chevrolet",
+				"Hyundai"
+			],
+			"answer": [1, 2, 5, 3, 4],
+			"time": 120
+		},
+		{
+			"type": "choice1",
+			"question": "Quel est le coût de production moyen par kWh pour une batterie lithium-ion?",
+			"choices": [
+				"100 $",
+				"200 $",
+				"300 $",
+				"400 $"
+			],
+			"answer": 1,
+			"time": 120
+		},
+		{
+			"type": "choice1",
+			"question": "Quel est le pourcentage de recyclabilité des batteries des véhicules électriques?",
+			"choices": [
+				"50%",
+				"60%",
+				"70%",
+				"90%"
+			],
+			"answer": 4,
+			"time": 120
+		},
+		{
+			"type": "choice2",
+			"question": "Les véhicules électriques ont-ils un coût total d'utilisation inférieur à celui des véhicules thermiques?",
+			"answer": true,
+			"time": 90
+		},
+		{
+			"type": "click1",
+			"question": "Cliquez sur le continent avec la plus grande adoption de véhicules électriques.",
+			"answer": [332, 77],
+			"cursor": 1,
+			"time": 90
+		},
+		{
+			"type": "draganddrop1",
+			"question": "Classez ces technologies selon leur impact sur l'autonomie des véhicules électriques (du plus au moins impactant).",
+			"choices": [
+				"Batteries à l'état solide",
+				"Super- condensateurs",
+				"Gestion thermique avancée",
+				"Réduction du poids",
+				"Optimisation du logiciel de gestion de l'énergie"
+			],
+			"answer": [1, 2, 5, 3, 4],
+			"time": 120
+		},
+		{
+			"type": "choice1",
+			"question": "Quel est le principal avantage des véhicules électriques dans les zones urbaines?",
+			"choices": [
+				"Réduction de la pollution de l'air",
+				"Facilité de stationnement",
+				"Vitesse de déplacement",
+				"Coût d'entretien"
+			],
+			"answer": 1,
+			"time": 120
+		},
+		{
+			"type": "draganddrop3",
+			"question": "Classez ces images de véhicules électriques selon leur catégorie.",
+			"choices": [
+				"voiture_sportive.png",
+				"voiture_compacte.png",
+				"scooter_electrique.png",
+				"camion_utilitaire.png"
+			],
+			"answer": [1, 2, 3, 4],
+			"zones": [
+				"Electrique", 
+				"Non electrique"
+			],
+			"time": 120
+		},
+		{
+			"type": "draganddrop2",
+			"question": "Classez ces technologies selon leur efficacité énergétique.",
+			"choices": [
+				"Électrification des transports en commun",
+				"Systèmes de récupération d'énergie au freinage",
+				"Systèmes de réduction de la traînée",
+				"Optimisation des pneus"
+			],
+			"answer": [1, 2, 3, 4],
+			"zones": [
+				"Voitures de tourisme", 
+				"Véhicules commerciaux"
+			],
+			"time": 120
 		}
 	]
 }

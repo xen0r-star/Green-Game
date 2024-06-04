@@ -4,7 +4,14 @@ from pathlib import Path
 
 paths = Path(__file__).parent.resolve()
 
+
+
 class readJsonFileSchema:
+    """
+    class pour lire un fichier json selon un schéma ce qui permets d'avoir un fichier json 
+    avec des donnée tout ecrite de la meme façon
+    """
+
     def __init__(self, file):
         try:
             with open(file, encoding='utf-8') as data_file:
@@ -24,7 +31,8 @@ class readJsonFileSchema:
     def validateJson(self):
         try:
             validate(self.jsonFile, self.schema)
-        except Exception as _:
+        except Exception as e:
+            print(e)
             return False
         else:
             return True
@@ -36,6 +44,10 @@ class readJsonFileSchema:
 
 
 class readJsonFile:
+    """
+    class pour extraire les donnée d'un fichier.json
+    """
+
     def __init__(self, file):
         try:
             with open(file, encoding='utf-8') as data_file:
@@ -48,3 +60,16 @@ class readJsonFile:
     
     def get(self):
         return self.data
+
+
+
+def addDataJsonFile(dataAdd):
+    """
+    fonction pour ajouter des valeurs dans un fichier json
+    """
+
+    dataFile = readJsonFile(paths / "../../data/data.json").get()
+    dataFile["score"].append(dataAdd)
+
+    with open(paths / "../../data/data.json", 'w') as json_file:
+        json.dump(dataFile, json_file, indent=4)
