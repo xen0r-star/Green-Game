@@ -172,7 +172,7 @@ class displayDragAndDrop3(Frame):
     "Retourner le score"
     def get(self):
         return self.points
-            
+
 
 
 

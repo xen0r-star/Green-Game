@@ -236,6 +236,10 @@ class waitEnd:
                 data = document.to_dict()
                 if data["progress"] == [1, 1]:
                     self.report = True
+            else:
+                self.report = False
+            
+            ref.on_snapshot(self.on_snapshot)
         except:
             logger.warn("Connection token not found")
         

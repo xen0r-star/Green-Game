@@ -5,7 +5,6 @@ from pathlib import Path
 from widgets.Image import custom_Image
 from widgets.Button import custom_Button
 from other.json.JsonFile import addDataJsonFile
-from other.firebase.firestore import waitEnd
 
 paths = Path(__file__).parent.resolve()
 
@@ -70,16 +69,6 @@ class displayScore(Frame):
         
         self.loopCreate = True
 
-
-        "------ Type de score -------------------------------------------------------------------"
-        if self.style == 2 or self.style == 3:
-            self.Duo()
-        else:
-            self.SoloPortail()
-
-
-    "Interface pour joueur seule ou avec le portail (Solo, Portail)"
-    def SoloPortail(self):
         "------ Affichage Score -------------------------------------------------------------------"
         fontStyle = font.Font(size=55, weight="bold")
         custom_Image(self, image=paths / "../assets/score/Frame1.png",
@@ -139,48 +128,6 @@ class displayScore(Frame):
                                 font=fontStyle, fg=self.master.color_text, bg=self.master.color_second, justify=RIGHT)
             
             label.grid(row=0, column=1, padx=0, pady=20, sticky="w")
-    
-
-
-
-
-
-
-
-    "Interface pour joueur seule ou avec le portail (Solo, Portail)"
-    def Duo(self):
-        self.waitEnd = waitEnd(token=self.token)
-        if not self.waitEnd.report:
-            print("boucle")
-            self.check_report()
-        else:
-            print("ok1")
-
-
-    def check_report(self):
-        if self.waitEnd.report:
-            print("ok2")
-        elif self.loopCreate:
-            self.master.after(1000, self.check_report)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     "Centrer le texte dans le widget Text"

@@ -1,7 +1,6 @@
 from tkinter import messagebox
 from pathlib import Path
 from logzero import logger
-import inspect
 
 from other.firebase.firestore import userPoints, endGame
 
@@ -12,7 +11,7 @@ from display.quiz.DragAndDrop1 import displayDragAndDrop1
 from display.quiz.DragAndDrop2 import displayDragAndDrop2
 from display.quiz.DragAndDrop3 import displayDragAndDrop3
 from display.quiz.audio1 import displayAudio
-from display.score import displayScore
+from display.duoScore import displayScoreDuo
 
 paths = Path(__file__).parent.resolve()
 
@@ -77,11 +76,10 @@ class duo:
                 
             self.currentQuestionIndex += 1
         else:
-            stack = inspect.stack()
             endGame(self.token, self.user)
             logger.info(f"End quiz, score player: {self.playerScore} ({int((self.playerScore / len(self.randomList)) * 100)})")
-            displayScore(self.master, int((self.playerScore / len(self.randomList)) * 100), style=self.user + 1, user=self.user, token=self.token)
-                    
+            displayScoreDuo(self.master, int((self.playerScore / len(self.randomList)) * 100), style=self.user + 1, user=self.user, token=self.token)
+
 
 
     "------ Fonction des different interface du quiz -------------------------------------------------------------------"
