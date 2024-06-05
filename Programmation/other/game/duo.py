@@ -1,8 +1,9 @@
 from tkinter import messagebox
 from pathlib import Path
 from logzero import logger
+import inspect
 
-from other.firebase.firestore import userPoints
+from other.firebase.firestore import userPoints, endGame
 
 from display.quiz.choice1 import displayChoice1
 from display.quiz.choice2 import displayChoice2
@@ -29,6 +30,7 @@ class duo:
         self.token = token
 
         self.readFile = self.master.question
+        self.playerScore = 0
 
         if self.readFile == []:
             self.error()
@@ -40,7 +42,7 @@ class duo:
 
 
     def start(self):
-        logger.error("Play Duo Game")
+        logger.info("Play Duo Game")
 
         self.listeType = []
         for data in self.readFile:
@@ -75,8 +77,10 @@ class duo:
                 
             self.currentQuestionIndex += 1
         else:
+            stack = inspect.stack()
+            endGame(self.token, self.user)
             logger.info(f"End quiz, score player: {self.playerScore} ({int((self.playerScore / len(self.randomList)) * 100)})")
-            displayScore(self.master, int((self.playerScore / len(self.randomList)) * 100), style=2, user=self.user, token=self.token)
+            displayScore(self.master, int((self.playerScore / len(self.randomList)) * 100), style=self.user + 1, user=self.user, token=self.token)
                     
 
 

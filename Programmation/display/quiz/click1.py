@@ -109,19 +109,12 @@ class displayClick1(Frame):
 
         
         "------ Lancer le chronometre -------------------------------------------------------------------"
-        if self.style == 2 or self.style == 3:
-            image = scoreApp().get()
-
-            self.header.config(image=image)
-            self.header.image = image
-
-        else:
-            photo = ImageTk.PhotoImage(
-                Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
-            )
-            self.header.config(image=photo)
-            self.header.image = photo
-            self.chrono = ChronoApp(self.master, self, self.header, self.time)
+        photo = ImageTk.PhotoImage(
+            Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
+        )
+        self.header.config(image=photo)
+        self.header.image = photo
+        self.chrono = ChronoApp(self.master, self, self.header, self.time)
     
 
     "Savoir quand et ou as cliqué l'utilisateur"
@@ -154,8 +147,7 @@ class displayClick1(Frame):
 
     "Valider et corriger la réponse"
     def validate(self):
-        if self.style != 2 and self.style != 3:
-            self.chrono.stop_timer()
+        self.chrono.stop_timer()
 
         if (self.responseDistance[0] >= self.correctResponse[0] - self.errorRate[self.cursorStyle - 1] and 
             self.responseDistance[0] <= self.correctResponse[0] + self.errorRate[self.cursorStyle - 1]) and (

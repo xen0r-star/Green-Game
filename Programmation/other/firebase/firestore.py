@@ -207,7 +207,10 @@ class endGame:
             document = ref.get()
 
             if document.exists:
-                ref.update({"progress": []})
+                data = document.to_dict()
+                data['progress'][self.user - 1] = 1
+                
+                ref.set(data)
                 self.report = True
             else:
                 self.report = False

@@ -38,7 +38,7 @@ class solo:
 
 
     def start(self):
-        logger.error("Play Solo Game")
+        logger.info("Play Solo Game")
 
         self.listeType = []
         for data in self.readFile:

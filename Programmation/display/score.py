@@ -35,7 +35,17 @@ class displayScore(Frame):
 
 
     def addComponents(self):
-        custom_Image(self, image=paths / "../assets/Background.png", 
+        "------ Style de la fenetre -------------------------------------------------------------------"
+        if self.style == 2:
+            background_source = paths / "../assets/Background-red.png"
+            self.master.color_background = "#CF6953"
+        elif self.style == 3:
+            background_source = paths / "../assets/Background-blue.png"
+            self.master.color_background = "#53B1CF"
+        else:
+            background_source = paths / "../../assets/Background.png"
+
+        custom_Image(self, image=background_source, 
                      bg=self.master.color_background, 
                      width=700, height=700, 
                      column=0, row=0, rowspan=3)
@@ -56,10 +66,13 @@ class displayScore(Frame):
                       width=55, height=55,
                       column=1, row=0, sticky=E,
                       padx=(0, 20))
+        
+        
+        self.loopCreate = True
 
 
         "------ Type de score -------------------------------------------------------------------"
-        if self.style == 2:
+        if self.style == 2 or self.style == 3:
             self.Duo()
         else:
             self.SoloPortail()
@@ -137,16 +150,17 @@ class displayScore(Frame):
     "Interface pour joueur seule ou avec le portail (Solo, Portail)"
     def Duo(self):
         self.waitEnd = waitEnd(token=self.token)
-        if not self.waitEnd:
+        if not self.waitEnd.report:
+            print("boucle")
             self.check_report()
         else:
-            print("ok")
+            print("ok1")
 
 
     def check_report(self):
         if self.waitEnd.report:
-            print("ok")
-        elif not self.loopCreate:
+            print("ok2")
+        elif self.loopCreate:
             self.master.after(1000, self.check_report)
 
 

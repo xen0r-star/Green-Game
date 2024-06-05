@@ -33,7 +33,7 @@ class portail:
 
 
     def start(self):
-        logger.error("Play Portail Game")
+        logger.info("Play Portail Game")
 
         self.listeType, self.readQuestion = [], []
         for data in self.readFile:
