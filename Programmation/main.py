@@ -39,7 +39,7 @@ class Window(Tk):
 
     def titleBar(self):
         """
-        Changer la couleur de la barre windows en haut
+            Changer la couleur de la barre de titre de la fenêtre Windows
         """
         
         self.update()
@@ -54,7 +54,7 @@ class Window(Tk):
 
     def display(self):
         """
-        function principale qui va lancer l'affichage de la premier fenetre et lancer le programme
+            Fonction principale qui va lancer l'affichage de la première fenêtre et démarrer le programme
         """
 
         self.grid_rowconfigure(0, weight=1)
@@ -67,9 +67,11 @@ class Window(Tk):
         except KeyboardInterrupt:
             logger.info("App stopped.")
 
+
+
     def home(self):
         """
-        lance la class de l'ecrant principale avec l'animation du model
+            Lance la classe de l'écran principal avec l'animation du modèle
         """
 
         self.display_start = displayStart(self)
@@ -77,10 +79,9 @@ class Window(Tk):
 
         logger.info("Home display")
 
-
     def startGame(self):
         """
-        lance la class de l'ecrant menu (solo, duo, portail)
+            Lance la classe de l'écran du menu (solo, duo, portail)
         """
 
         for content in self.display_start.grid_slaves():
@@ -95,7 +96,7 @@ class Window(Tk):
 
     def menuSolo(self):
         """
-        lance la class de l'ecrant menu pour jouer seul (Solo)
+            Lance la classe de l'écran du menu pour jouer seul (Solo)
         """
 
         for content in self.display_menu.grid_slaves():
@@ -108,7 +109,7 @@ class Window(Tk):
 
     def menuDuo(self):
         """
-        lance la class de l'ecrant menu pour jouer a deux (Duo)
+            Lance la classe de l'écran du menu pour jouer à deux (Duo)
         """
 
         for content in self.display_menu.grid_slaves():
@@ -122,7 +123,7 @@ class Window(Tk):
 
     def menuPortail(self):
         """
-        lance la class de l'ecrant menu pour jouer avec le portail (Portail)
+            Lance la classe de l'écran du menu pour jouer avec le portail (Portail)
         """
 
         for content in self.display_menu.grid_slaves():
@@ -137,7 +138,7 @@ class Window(Tk):
 
     def startQuizSolo(self, numberQuestion=20):
         """
-        lance la class qui va demerarer le jeux seul (Solo)
+            Lance la classe qui va démarrer le jeu en solo (Solo)
         """
 
         for content in self.grid_slaves():
@@ -150,7 +151,7 @@ class Window(Tk):
 
     def startQuizDuo(self, user, token):
         """
-        lance la class qui va demarrer le jeux a deux (Duo)
+            Lance la classe qui va démarrer le jeu à deux (Duo)
         """
 
         for content in self.grid_slaves():
@@ -163,7 +164,7 @@ class Window(Tk):
 
     def startQuizPortail(self):
         """
-        lance la class qui va demarrer le jeux avec le portail (Portail)
+            Lance la classe qui va démarrer le jeu avec le portail (Portail)
         """
 
         for content in self.grid_slaves():

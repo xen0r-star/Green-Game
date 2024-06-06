@@ -1,0 +1,12 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "dataQuestion",
+	"type": "object",
+	"properties": {
+		"elements": {}
+	},
+	"required": [
+		"elements"
+	],
+	"additionalProperties": false
+}
