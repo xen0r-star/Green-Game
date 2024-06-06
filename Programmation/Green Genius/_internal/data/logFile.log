@@ -672,3 +672,11 @@
 [I 240605 21:36:16 main:135] Portail Game
 [I 240605 21:36:21 portail:36] Play Portail Game
 [I 240605 21:36:21 main:175] Start Portail Game
+[I 240606 09:51:53 main:80] Home display
+[I 240606 09:51:55 main:93] Start Game
+[I 240606 09:51:56 main:108] Solo Game
+[I 240606 09:52:00 solo:41] Play Solo Game
+[I 240606 09:52:00 main:149] Start Solo Game
+[I 240606 10:00:02 solo:77] End quiz, score player: 7 (35 %)
+[I 240606 10:00:54 main:93] Start Game
+[I 240606 10:02:22 main:80] Home display
