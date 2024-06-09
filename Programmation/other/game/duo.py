@@ -11,7 +11,7 @@ from display.quiz.DragAndDrop1 import displayDragAndDrop1
 from display.quiz.DragAndDrop2 import displayDragAndDrop2
 from display.quiz.DragAndDrop3 import displayDragAndDrop3
 from display.quiz.audio1 import displayAudio
-from display.scoreDuo import displayScoreDuo # type: ignore
+from display.scoreDuo import displayScoreDuo
 
 paths = Path(__file__).parent.resolve()
 
@@ -160,7 +160,7 @@ class duo:
                                     time=self.readFile[self.randomList[self.currentQuestionIndex]]["time"],
                                     currentQuestion=self.currentQuestionIndex + 1,
                                     maxQuestion=len(self.randomList),
-                                    style=1)
+                                    style=self.user + 1)
         self.display.grid(row=0, column=0, sticky="nsew")
 
 

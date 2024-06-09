@@ -152,4 +152,4 @@ class displayPortail(Frame):
     def connexion(self, token):
         self.join_group_connexion = connexionPortail(token)
         if self.join_group_connexion.report:
-            self.master.startQuizPortail()
+            self.master.startQuizPortail(token)

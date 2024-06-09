@@ -262,6 +262,8 @@ class displayAudio(Frame):
     "Valider et corriger la réponse"
     def validate(self):
         self.chrono.stop_timer()
+        if not(pygame.mixer.get_init() is None):
+            pygame.mixer.music.pause()
 
         if self.questionNumberSelect == self.correctResponse:
             self.points = 1

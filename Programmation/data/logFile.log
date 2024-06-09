@@ -662,3 +662,484 @@
 [I 240605 21:24:30 main:122] Duo Game
 [I 240605 21:24:31 main:93] Start Game
 [I 240605 21:24:34 main:80] Home display
+[I 240607 22:30:21 main:80] Home display
+[I 240607 22:30:26 main:93] Start Game
+[I 240607 22:30:27 main:108] Solo Game
+[I 240607 22:30:27 solo:41] Play Solo Game
+[I 240607 22:30:28 main:149] Start Solo Game
+[I 240607 22:30:30 solo:77] End quiz, score player: 0 (0 %)
+[I 240607 22:30:31 main:93] Start Game
+[I 240607 22:30:32 main:108] Solo Game
+[I 240607 22:30:32 solo:41] Play Solo Game
+[I 240607 22:30:32 main:149] Start Solo Game
+[I 240607 22:30:56 solo:77] End quiz, score player: 0 (0 %)
+[I 240607 22:30:58 main:93] Start Game
+[I 240607 22:30:58 main:108] Solo Game
+[I 240607 22:30:59 solo:41] Play Solo Game
+[I 240607 22:30:59 main:149] Start Solo Game
+[I 240607 22:31:07 solo:77] End quiz, score player: 0 (0 %)
+[I 240607 22:31:08 main:93] Start Game
+[I 240607 22:31:09 main:108] Solo Game
+[I 240607 22:31:09 solo:41] Play Solo Game
+[I 240607 22:31:09 main:149] Start Solo Game
+[I 240607 22:31:14 solo:77] End quiz, score player: 0 (0 %)
+[I 240607 22:31:15 main:93] Start Game
+[I 240607 22:31:16 main:122] Duo Game
+[I 240607 22:31:17 main:93] Start Game
+[I 240607 22:31:17 main:108] Solo Game
+[I 240607 22:31:18 solo:41] Play Solo Game
+[I 240607 22:31:18 main:149] Start Solo Game
+[I 240607 22:31:32 solo:77] End quiz, score player: 0 (0 %)
+[I 240607 22:31:33 main:93] Start Game
+[I 240607 22:31:34 main:108] Solo Game
+[I 240607 22:31:35 solo:41] Play Solo Game
+[I 240607 22:31:35 main:149] Start Solo Game
+[I 240607 22:36:44 solo:77] End quiz, score player: 0 (0 %)
+[I 240607 22:44:54 main:93] Start Game
+[I 240607 22:44:54 main:80] Home display
+[I 240607 22:44:56 main:93] Start Game
+[I 240607 22:44:57 main:122] Duo Game
+[I 240607 22:45:00 main:93] Start Game
+[I 240607 22:45:01 main:108] Solo Game
+[I 240607 22:45:02 solo:41] Play Solo Game
+[I 240607 22:45:02 main:149] Start Solo Game
+[I 240607 22:45:21 solo:77] End quiz, score player: 0 (0 %)
+[I 240607 22:45:23 main:93] Start Game
+[I 240607 22:45:25 main:108] Solo Game
+[I 240607 22:45:26 solo:41] Play Solo Game
+[I 240607 22:45:26 main:149] Start Solo Game
+[I 240607 22:45:37 solo:77] End quiz, score player: 0 (0 %)
+[I 240607 22:45:39 main:93] Start Game
+[I 240607 22:45:39 main:108] Solo Game
+[I 240607 22:45:40 solo:41] Play Solo Game
+[I 240607 22:45:40 main:149] Start Solo Game
+[I 240607 22:49:06 solo:77] End quiz, score player: 0 (0 %)
+[I 240607 22:49:08 main:93] Start Game
+[I 240607 22:49:09 main:108] Solo Game
+[I 240607 22:49:11 solo:41] Play Solo Game
+[I 240607 22:49:11 main:149] Start Solo Game
+[I 240607 22:49:26 solo:77] End quiz, score player: 0 (0 %)
+[I 240607 22:49:28 main:93] Start Game
+[I 240607 22:49:29 main:108] Solo Game
+[I 240607 22:49:30 solo:41] Play Solo Game
+[I 240607 22:49:30 main:149] Start Solo Game
+[I 240608 10:03:06 main:80] Home display
+[I 240608 10:03:06 main:93] Start Game
+[I 240608 10:03:08 main:135] Portail Game
+[I 240608 10:03:18 portail:36] Play Portail Game
+[I 240608 10:03:18 main:175] Start Portail Game
+[I 240608 10:06:29 main:80] Home display
+[I 240608 10:06:29 main:93] Start Game
+[I 240608 10:06:30 main:135] Portail Game
+[I 240608 10:06:36 portail:36] Play Portail Game
+[I 240608 10:06:36 main:175] Start Portail Game
+[I 240608 10:07:27 main:80] Home display
+[I 240608 10:07:27 main:93] Start Game
+[I 240608 10:07:29 main:135] Portail Game
+[I 240608 10:07:33 portail:36] Play Portail Game
+[I 240608 10:07:33 main:175] Start Portail Game
+[I 240608 10:07:37 main:80] Home display
+[I 240608 10:07:38 main:93] Start Game
+[I 240608 10:07:39 main:135] Portail Game
+[I 240608 10:07:43 portail:36] Play Portail Game
+[I 240608 10:07:43 main:175] Start Portail Game
+[I 240608 10:07:48 main:80] Home display
+[I 240608 10:07:53 main:80] Home display
+[I 240608 10:07:54 main:93] Start Game
+[I 240608 10:07:54 main:108] Solo Game
+[I 240608 10:07:55 solo:41] Play Solo Game
+[I 240608 10:07:55 main:149] Start Solo Game
+[I 240608 10:09:17 main:80] Home display
+[I 240608 10:09:19 main:93] Start Game
+[I 240608 10:09:19 main:135] Portail Game
+[I 240608 10:09:24 portail:36] Play Portail Game
+[I 240608 10:09:24 main:175] Start Portail Game
+[I 240608 10:17:00 main:80] Home display
+[I 240608 10:17:03 main:93] Start Game
+[I 240608 10:17:03 main:135] Portail Game
+[I 240608 10:17:09 portail:38] Play Portail Game
+[I 240608 10:17:09 main:175] Start Portail Game
+[I 240608 10:19:56 main:80] Home display
+[I 240608 10:20:00 main:93] Start Game
+[I 240608 10:20:00 main:135] Portail Game
+[I 240608 10:20:05 portail:38] Play Portail Game
+[I 240608 10:20:30 main:80] Home display
+[I 240608 10:20:31 main:93] Start Game
+[I 240608 10:20:31 main:135] Portail Game
+[I 240608 10:20:36 portail:38] Play Portail Game
+[I 240608 10:20:36 main:175] Start Portail Game
+[I 240608 10:21:25 main:80] Home display
+[I 240608 10:21:25 main:93] Start Game
+[I 240608 10:21:26 main:135] Portail Game
+[I 240608 10:21:30 portail:38] Play Portail Game
+[I 240608 10:21:30 main:175] Start Portail Game
+[I 240608 10:22:02 main:80] Home display
+[I 240608 10:22:02 main:93] Start Game
+[I 240608 10:22:03 main:135] Portail Game
+[I 240608 10:22:07 portail:38] Play Portail Game
+[I 240608 10:22:07 main:175] Start Portail Game
+[I 240608 10:22:37 main:68] App stopped.
+[I 240608 10:22:48 main:80] Home display
+[I 240608 10:22:49 main:93] Start Game
+[I 240608 10:22:49 main:135] Portail Game
+[I 240608 10:22:53 portail:38] Play Portail Game
+[I 240608 10:22:53 main:175] Start Portail Game
+[I 240608 10:30:16 main:80] Home display
+[I 240608 10:30:19 main:93] Start Game
+[I 240608 10:30:20 main:135] Portail Game
+[I 240608 10:30:24 portail:38] Play Portail Game
+[I 240608 10:30:25 main:175] Start Portail Game
+[I 240608 10:30:40 main:80] Home display
+[I 240608 10:30:41 main:93] Start Game
+[I 240608 10:30:44 main:135] Portail Game
+[I 240608 10:30:48 portail:38] Play Portail Game
+[I 240608 10:30:48 main:175] Start Portail Game
+[I 240608 10:33:48 main:80] Home display
+[I 240608 10:33:48 main:93] Start Game
+[I 240608 10:33:49 main:135] Portail Game
+[I 240608 10:33:56 portail:38] Play Portail Game
+[I 240608 10:33:56 main:175] Start Portail Game
+[I 240608 10:35:06 main:80] Home display
+[I 240608 10:35:07 main:93] Start Game
+[I 240608 10:35:07 main:135] Portail Game
+[I 240608 10:35:12 portail:38] Play Portail Game
+[I 240608 10:35:12 main:175] Start Portail Game
+[I 240608 10:49:45 main:80] Home display
+[I 240608 10:49:58 main:93] Start Game
+[I 240608 10:49:59 main:135] Portail Game
+[I 240608 10:50:04 portail:38] Play Portail Game
+[I 240608 10:51:11 main:80] Home display
+[I 240608 10:51:12 main:93] Start Game
+[I 240608 10:51:12 main:135] Portail Game
+[I 240608 10:51:16 portail:38] Play Portail Game
+[I 240608 10:51:47 main:80] Home display
+[I 240608 10:51:47 main:93] Start Game
+[I 240608 10:51:48 main:135] Portail Game
+[I 240608 10:51:52 portail:38] Play Portail Game
+[I 240608 10:53:07 main:80] Home display
+[I 240608 10:53:08 main:93] Start Game
+[I 240608 10:53:08 main:135] Portail Game
+[I 240608 10:53:12 portail:38] Play Portail Game
+[I 240608 10:53:32 main:80] Home display
+[I 240608 10:53:34 main:93] Start Game
+[I 240608 10:53:34 main:135] Portail Game
+[I 240608 10:53:39 portail:38] Play Portail Game
+[I 240608 10:54:35 main:80] Home display
+[I 240608 10:54:38 main:93] Start Game
+[I 240608 10:54:38 main:135] Portail Game
+[I 240608 10:54:43 portail:38] Play Portail Game
+[I 240608 10:55:31 main:80] Home display
+[I 240608 10:55:32 main:93] Start Game
+[I 240608 10:55:32 main:135] Portail Game
+[I 240608 10:55:36 portail:38] Play Portail Game
+[I 240608 10:55:36 main:175] Start Portail Game
+[I 240608 10:56:44 main:80] Home display
+[I 240608 10:56:45 main:93] Start Game
+[I 240608 10:56:45 main:135] Portail Game
+[I 240608 10:56:49 portail:38] Play Portail Game
+[I 240608 10:56:49 main:175] Start Portail Game
+[I 240608 10:57:57 main:80] Home display
+[I 240608 10:57:58 main:93] Start Game
+[I 240608 10:57:59 main:135] Portail Game
+[I 240608 10:58:03 portail:38] Play Portail Game
+[I 240608 10:58:03 main:175] Start Portail Game
+[I 240608 10:58:30 main:68] App stopped.
+[I 240608 11:02:59 main:80] Home display
+[I 240608 11:03:01 main:93] Start Game
+[I 240608 11:03:01 main:135] Portail Game
+[W 240608 11:03:04 firestore:110] Connection token not found
+[I 240608 11:03:13 portail:38] Play Portail Game
+[I 240608 11:03:14 main:175] Start Portail Game
+[I 240608 11:03:29 main:80] Home display
+[I 240608 11:03:30 main:93] Start Game
+[I 240608 11:03:31 main:135] Portail Game
+[I 240608 11:03:36 portail:38] Play Portail Game
+[I 240608 11:03:37 main:175] Start Portail Game
+[I 240608 11:05:20 main:80] Home display
+[I 240608 11:05:20 main:93] Start Game
+[I 240608 11:05:21 main:135] Portail Game
+[I 240608 11:05:27 portail:38] Play Portail Game
+[I 240608 11:07:33 main:80] Home display
+[I 240608 11:07:33 main:93] Start Game
+[I 240608 11:07:34 main:135] Portail Game
+[I 240608 11:07:39 portail:38] Play Portail Game
+[I 240608 11:07:39 main:175] Start Portail Game
+[I 240608 11:08:13 main:80] Home display
+[I 240608 11:08:14 main:93] Start Game
+[I 240608 11:08:14 main:135] Portail Game
+[I 240608 11:08:25 portail:38] Play Portail Game
+[I 240608 11:08:26 main:175] Start Portail Game
+[I 240608 11:09:11 main:80] Home display
+[I 240608 11:09:12 main:93] Start Game
+[I 240608 11:09:12 main:135] Portail Game
+[I 240608 11:09:18 portail:38] Play Portail Game
+[I 240608 11:09:19 main:175] Start Portail Game
+[I 240608 11:11:17 main:80] Home display
+[I 240608 11:11:20 main:93] Start Game
+[I 240608 11:11:20 main:135] Portail Game
+[I 240608 11:11:26 portail:38] Play Portail Game
+[I 240608 11:11:27 main:175] Start Portail Game
+[I 240608 11:12:02 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:12:03 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:12:04 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:12:05 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:12:07 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:12:08 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:12:09 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:12:10 main:68] App stopped.
+[I 240608 11:13:49 main:80] Home display
+[I 240608 11:13:50 main:93] Start Game
+[I 240608 11:13:50 main:135] Portail Game
+[I 240608 11:13:56 portail:38] Play Portail Game
+[I 240608 11:13:57 main:175] Start Portail Game
+[I 240608 11:14:15 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:17 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:18 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:19 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:20 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:21 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:22 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:23 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:24 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:25 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:26 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:27 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:28 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:29 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:31 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:32 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:33 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:34 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:35 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:36 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:37 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:38 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:39 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:40 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:41 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:42 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:43 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:45 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:46 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:47 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:48 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:49 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:50 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:51 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:52 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:53 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:54 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:55 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:56 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:57 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:14:58 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:00 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:01 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:02 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:03 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:04 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:05 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:06 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:07 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:08 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:09 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:10 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:11 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:12 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:13 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:15 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:16 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:17 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:18 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:19 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:20 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:21 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:22 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:23 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:24 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:25 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:26 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:27 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:28 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:30 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:31 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:32 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:33 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:34 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:35 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:36 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:37 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:38 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:39 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:40 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:41 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:42 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:43 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:44 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:46 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:47 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:15:53 main:80] Home display
+[I 240608 11:15:53 main:93] Start Game
+[I 240608 11:15:54 main:135] Portail Game
+[I 240608 11:15:59 portail:38] Play Portail Game
+[I 240608 11:16:00 main:175] Start Portail Game
+[I 240608 11:16:32 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:33 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:34 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:35 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:36 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:37 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:39 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:40 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:41 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:42 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:43 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:44 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:45 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:46 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:47 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:16:48 main:68] App stopped.
+[I 240608 11:16:59 main:80] Home display
+[I 240608 11:17:54 main:80] Home display
+[I 240608 11:17:59 main:93] Start Game
+[I 240608 11:18:00 main:135] Portail Game
+[I 240608 11:18:05 portail:38] Play Portail Game
+[I 240608 11:18:06 main:175] Start Portail Game
+[I 240608 11:18:32 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:18:33 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:18:34 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:18:36 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:21:04 main:80] Home display
+[I 240608 11:21:05 main:93] Start Game
+[I 240608 11:21:05 main:135] Portail Game
+[I 240608 11:21:10 portail:38] Play Portail Game
+[I 240608 11:21:10 main:175] Start Portail Game
+[I 240608 11:22:54 portail:78] End quiz, score player: 1 (10 %)
+[I 240608 11:33:52 main:80] Home display
+[I 240608 11:34:05 main:93] Start Game
+[I 240608 11:34:06 main:135] Portail Game
+[I 240608 11:34:11 portail:38] Play Portail Game
+[I 240608 11:34:11 main:175] Start Portail Game
+[I 240608 11:35:41 main:80] Home display
+[I 240608 11:35:42 main:93] Start Game
+[I 240608 11:35:43 main:122] Duo Game
+[I 240608 11:35:44 main:93] Start Game
+[I 240608 11:35:44 main:108] Solo Game
+[I 240608 11:35:46 main:93] Start Game
+[I 240608 11:35:47 main:135] Portail Game
+[I 240608 11:35:50 portail:38] Play Portail Game
+[I 240608 11:35:51 main:175] Start Portail Game
+[I 240608 11:36:33 portail:78] End quiz, score player: 0 (0 %)
+[I 240608 11:36:44 main:93] Start Game
+[I 240608 11:41:33 main:80] Home display
+[I 240608 11:41:54 main:80] Home display
+[I 240608 11:41:59 main:93] Start Game
+[I 240608 11:42:00 main:93] Start Game
+[I 240608 11:42:01 main:122] Duo Game
+[I 240608 11:42:04 main:122] Duo Game
+[I 240608 11:43:05 duo:44] Play Duo Game
+[I 240608 11:43:05 main:162] Start Duo Game
+[W 240608 11:43:05 firestore:83] Stop listening
+[I 240608 11:43:06 duo:44] Play Duo Game
+[I 240608 11:43:06 main:162] Start Duo Game
+[I 240608 11:45:28 duo:80] End quiz, score player: 0 (0 %)
+[I 240608 11:46:09 duo:80] End quiz, score player: 0 (0 %)
+[W 240608 11:46:09 firestore:267] Stop listening
+[I 240608 11:46:20 main:93] Start Game
+[I 240608 11:46:21 main:93] Start Game
+[I 240608 11:47:23 main:80] Home display
+[I 240608 11:47:28 main:80] Home display
+[I 240608 11:47:31 main:93] Start Game
+[I 240608 11:47:31 main:93] Start Game
+[I 240608 11:47:32 main:122] Duo Game
+[I 240608 11:47:33 main:122] Duo Game
+[I 240608 11:47:45 duo:44] Play Duo Game
+[I 240608 11:47:45 main:162] Start Duo Game
+[W 240608 11:47:45 firestore:83] Stop listening
+[I 240608 11:47:46 duo:44] Play Duo Game
+[I 240608 11:47:46 main:162] Start Duo Game
+[I 240608 11:48:12 duo:80] End quiz, score player: 0 (0 %)
+[I 240608 11:48:12 duo:80] End quiz, score player: 0 (0 %)
+[W 240608 11:48:13 firestore:267] Stop listening
+[I 240608 11:48:15 main:93] Start Game
+[I 240608 11:48:16 main:93] Start Game
+[I 240608 11:48:16 main:122] Duo Game
+[I 240608 11:48:17 main:122] Duo Game
+[I 240608 11:48:33 duo:44] Play Duo Game
+[I 240608 11:48:33 main:162] Start Duo Game
+[W 240608 11:48:34 firestore:83] Stop listening
+[I 240608 11:48:35 duo:44] Play Duo Game
+[I 240608 11:48:35 main:162] Start Duo Game
+[I 240608 11:49:00 duo:80] End quiz, score player: 0 (0 %)
+[I 240608 11:49:01 duo:80] End quiz, score player: 0 (0 %)
+[W 240608 11:49:01 firestore:267] Stop listening
+[I 240608 11:49:03 main:93] Start Game
+[I 240608 11:49:05 main:93] Start Game
+[I 240608 11:49:05 main:122] Duo Game
+[I 240608 11:49:06 main:122] Duo Game
+[I 240608 11:49:34 duo:44] Play Duo Game
+[I 240608 11:49:34 main:162] Start Duo Game
+[W 240608 11:49:34 firestore:83] Stop listening
+[I 240608 11:49:35 duo:44] Play Duo Game
+[I 240608 11:49:35 main:162] Start Duo Game
+[I 240608 11:49:57 duo:80] End quiz, score player: 0 (0 %)
+[I 240608 11:49:59 duo:80] End quiz, score player: 0 (0 %)
+[W 240608 11:49:59 firestore:267] Stop listening
+[I 240608 11:50:02 main:93] Start Game
+[I 240608 11:50:02 main:93] Start Game
+[I 240608 11:50:03 main:122] Duo Game
+[I 240608 11:50:04 main:122] Duo Game
+[I 240608 11:50:18 duo:44] Play Duo Game
+[I 240608 11:50:18 main:162] Start Duo Game
+[W 240608 11:50:18 firestore:83] Stop listening
+[I 240608 11:50:19 duo:44] Play Duo Game
+[I 240608 11:50:19 main:162] Start Duo Game
+[I 240608 11:50:39 duo:80] End quiz, score player: 0 (0 %)
+[I 240608 11:50:44 duo:80] End quiz, score player: 0 (0 %)
+[W 240608 11:50:44 firestore:267] Stop listening
+[I 240608 11:50:46 main:93] Start Game
+[I 240608 11:50:47 main:93] Start Game
+[I 240608 11:50:47 main:122] Duo Game
+[I 240608 11:50:49 main:122] Duo Game
+[I 240608 11:51:00 duo:44] Play Duo Game
+[I 240608 11:51:00 main:162] Start Duo Game
+[W 240608 11:51:00 firestore:83] Stop listening
+[I 240608 11:51:01 duo:44] Play Duo Game
+[I 240608 11:51:01 main:162] Start Duo Game
+[I 240608 11:56:43 main:80] Home display
+[I 240608 11:56:44 main:80] Home display
+[I 240608 11:56:49 main:93] Start Game
+[I 240608 11:56:55 main:93] Start Game
+[I 240608 11:56:56 main:122] Duo Game
+[I 240608 11:56:56 main:122] Duo Game
+[I 240608 11:57:08 duo:44] Play Duo Game
+[I 240608 11:57:08 main:162] Start Duo Game
+[W 240608 11:57:08 firestore:83] Stop listening
+[I 240608 11:57:09 duo:44] Play Duo Game
+[I 240608 11:57:09 main:162] Start Duo Game
+[I 240608 11:57:42 duo:80] End quiz, score player: 0 (0 %)
+[I 240608 11:57:45 duo:80] End quiz, score player: 0 (0 %)
+[W 240608 11:57:46 firestore:267] Stop listening
+[I 240608 11:57:47 main:93] Start Game
+[I 240608 11:57:48 main:93] Start Game
+[I 240608 11:57:49 main:80] Home display
+[I 240608 11:57:49 main:80] Home display
+[I 240608 13:53:18 main:80] Home display
+[I 240608 13:53:19 main:93] Start Game
+[I 240608 13:53:42 main:108] Solo Game
+[I 240608 13:54:19 main:93] Start Game
+[I 240608 13:54:20 main:122] Duo Game
+[I 240608 13:55:18 main:93] Start Game
+[I 240608 13:55:19 main:135] Portail Game
+[I 240608 13:55:33 main:93] Start Game
+[I 240608 13:55:35 main:108] Solo Game
+[I 240608 13:55:39 solo:41] Play Solo Game
+[I 240608 13:55:39 main:149] Start Solo Game
+[I 240608 13:55:47 main:80] Home display
+[I 240608 13:55:49 main:93] Start Game
+[I 240608 13:55:50 main:108] Solo Game
+[I 240608 13:55:50 solo:41] Play Solo Game
+[I 240608 13:55:50 main:149] Start Solo Game
+[I 240608 14:01:58 main:80] Home display
+[I 240608 14:02:00 main:93] Start Game
+[I 240608 14:02:01 main:135] Portail Game

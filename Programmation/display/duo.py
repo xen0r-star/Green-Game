@@ -223,6 +223,7 @@ class displayDuo(Frame):
         if self.create_group_connexion.report:
             self.master.question = self.readFile
             self.master.listQuestion = self.randomList
+            self.create_group_connexion.stop_listening()
             self.master.startQuizDuo(2, self.create_group_connexion.id)
         elif not self.loopCreate:
             self.master.after(1000, self.check_report)

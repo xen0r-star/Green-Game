@@ -98,6 +98,7 @@ class displayScoreDuo(Frame):
     "Attend une notification de la base donnée pour dire quand les deux joueur on finie"
     def check_report(self):
         if self.waitEnd.report:
+            self.waitEnd.stop_listening()
             self.showScore()
         elif self.loopCreate:
             self.master.after(1000, self.check_report)

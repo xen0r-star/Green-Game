@@ -162,7 +162,7 @@ class Window(Tk):
         logger.info("Start Duo Game")
 
 
-    def startQuizPortail(self):
+    def startQuizPortail(self, token):
         """
             Lance la classe qui va démarrer le jeu avec le portail (Portail)
         """
@@ -170,7 +170,7 @@ class Window(Tk):
         for content in self.grid_slaves():
             content.grid_remove()
 
-        portail(self, 20)
+        portail(self, 10, token)
 
         logger.info("Start Portail Game")
 

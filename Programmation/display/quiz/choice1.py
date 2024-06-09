@@ -7,6 +7,7 @@ from widgets.Button import custom_Button
 from widgets.Image import custom_Image
 
 from other.chrono import ChronoApp
+from other.firebase.firestore import portailNotify
 
 paths = Path(__file__).parent.resolve()
 
@@ -18,7 +19,7 @@ class displayChoice1(Frame):
     """
 
     def __init__(self, master, callback, textQuestion, textResponse, correctResponse, 
-                 style=1, time=60, currentQuestion = 0, maxQuestion=20):
+                 style=1, time=60, currentQuestion = 0, maxQuestion=20, token=""):
         super().__init__(master)
         self.callback = callback
         
@@ -29,6 +30,9 @@ class displayChoice1(Frame):
         self.textResponse = textResponse
         self.correctResponse = correctResponse
 
+        self.token = token
+
+        self.currentQuestion = currentQuestion
         self.questionNumber = f"{currentQuestion}/{maxQuestion}"
         self.questionNumberSelect = 0
         self.points = 0
@@ -77,6 +81,7 @@ class displayChoice1(Frame):
         
         fontStyle = font.Font(size=15, weight="bold")
         
+        
         self.header = Label(self.question, compound="center", font=fontStyle, fg=self.master.color_text, bg=self.master.color_background)
         self.header.grid(column=0, row=2, pady=(7, 0))
         
@@ -99,9 +104,14 @@ class displayChoice1(Frame):
                             bg=self.master.color_background,
                             column=0, row=2, ipadx=5, ipady=2)
         
-        fontStyle = font.Font(size=25, weight="bold")
-        self.numberQuestion = Label(self, text=self.questionNumber, compound="center", font=fontStyle, fg=self.master.color_text2, bg=self.master.color_background)
-        self.numberQuestion.grid(column=0, row=2, sticky=SE, padx=20, pady=20)
+            fontStyle = font.Font(size=25, weight="bold")
+            self.numberQuestion = Label(self, text=self.questionNumber, compound="center", font=fontStyle, fg=self.master.color_text2, bg=self.master.color_background)
+            self.numberQuestion.grid(column=0, row=2, sticky=SE, padx=20, pady=20)
+        elif self.style == 4:
+            self.portail_connexion = portailNotify(self.token, self.currentQuestion - 1)
+
+            self.loopCreate = True
+            self.selectWithPortail()
 
 
         "------ Lancer le chronomètre -------------------------------------------------------------------"
@@ -110,7 +120,11 @@ class displayChoice1(Frame):
         )
         self.header.config(image=photo)
         self.header.image = photo
-        self.chrono = ChronoApp(self.master, self, self.header, self.time)
+
+        if self.style != 4:
+            self.chrono = ChronoApp(self.master, self, self.header, self.time)
+        elif self.style == 4:
+            self.header.config(text=self.questionNumber)
 
 
     "Création des boutons"
@@ -118,12 +132,20 @@ class displayChoice1(Frame):
         buttonBorder = Frame(self.body, bg="white")
         buttonBorder.grid(column=0, row=row, pady=7)
         fontStyle = font.Font(size=15, weight="bold")
-        button = Button(buttonBorder, text=text, font=fontStyle, justify='right', 
-                           width=50, height=2, cursor="hand2",
-                           fg=self.master.color_text, bg=self.master.color_fourth, bd=0, 
-                           highlightthickness=4, highlightbackground="white", highlightcolor="white",
-                           activebackground=self.master.color_fourth, activeforeground=self.master.color_text,
-                           command=lambda: self.changeBorderColor(buttonBorder, button_number))
+        if self.style != 4:
+            button = Button(buttonBorder, text=text, font=fontStyle, justify='right', 
+                            width=50, height=2, cursor="hand2",
+                            fg=self.master.color_text, bg=self.master.color_fourth, bd=0, 
+                            highlightthickness=4, highlightbackground="white", highlightcolor="white",
+                            activebackground=self.master.color_fourth, activeforeground=self.master.color_text,
+                            command=lambda: self.changeBorderColor(buttonBorder, button_number))
+        elif self.style == 4:
+            button = Button(buttonBorder, text=text, font=fontStyle, justify='right', 
+                            width=50, height=2, cursor="hand2",
+                            fg=self.master.color_text, bg=self.master.color_fourth, bd=0, 
+                            highlightthickness=4, highlightbackground="white", highlightcolor="white",
+                            activebackground=self.master.color_fourth, activeforeground=self.master.color_text)
+            
         button.grid(column=0, row=0, padx=5, pady=5)
         self.button_borders.append(buttonBorder)
     
@@ -138,7 +160,12 @@ class displayChoice1(Frame):
 
     "Valider et corriger la réponse"
     def validate(self):
-        self.chrono.stop_timer()
+        if self.style != 4:
+            self.chrono.stop_timer()
+        elif self.style == 4:
+            self.loopCreate = False
+            self.portail_connexion.stop_listening()
+            self.master.after_cancel(self.task_id)
 
         if self.questionNumberSelect == self.correctResponse:
             self.points = 1
@@ -149,3 +176,18 @@ class displayChoice1(Frame):
     "Retourner le score"
     def get(self):
         return self.points
+
+
+    "Indique quand le portail a fait une interaction"
+    def selectWithPortail(self):
+        if self.portail_connexion.report == 5:
+            self.validate()
+        elif self.portail_connexion.report in {1, 2, 3, 4}:
+            for border in self.button_borders:
+                border.config(bg="white")
+
+            self.button_borders[self.portail_connexion.report - 1].config(bg="#114232")
+            self.questionNumberSelect = self.portail_connexion.report
+
+        if self.loopCreate:
+            self.task_id = self.master.after(1000, self.selectWithPortail)

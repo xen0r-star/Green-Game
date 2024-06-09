@@ -65,7 +65,7 @@ class createGroup:
             })
 
             self.report = False
-            ref.on_snapshot(self.on_snapshot)
+            self.listener = ref.on_snapshot(self.on_snapshot)
         except Exception as e:
             logger.error(f"Error during initialization: {e}")
         
@@ -77,6 +77,11 @@ class createGroup:
                 doc = change.document.to_dict()
                 if doc.get('connexion') is True:
                     self.report = True
+    
+    "Arreter d'attendre une notification de la base de données"
+    def stop_listening(self):
+        logger.warn("Stop listening")
+        self.listener.unsubscribe()
 
 
 
@@ -244,7 +249,7 @@ class waitEnd:
             else:
                 self.report = False
             
-            ref.on_snapshot(self.on_snapshot)
+            self.listener = ref.on_snapshot(self.on_snapshot)
         except:
             logger.warn("Connection token not found")
         
@@ -256,3 +261,70 @@ class waitEnd:
                 doc = change.document.to_dict()
                 if doc.get('progress') == [1, 1]:
                     self.report = True
+                
+    "Arreter d'attendre une notification de la base de données"
+    def stop_listening(self):
+        logger.warn("Stop listening")
+        self.listener.unsubscribe()
+
+
+
+class storageQuestionPortail:
+    """
+        Classe permettant de stocker les questions pour le portail
+    """
+
+    def __init__(self, token, data, list, progress):
+        self.token = token
+        self.data = data
+        self.progress = progress
+        self.list = list
+
+        self.ref = db.collection('Portail').document(self.token.upper())
+
+        document = self.ref.get()
+
+        if document.exists:
+            self.ref.update({"question": self.data, "listQuestion": self.list, "progress": self.progress})
+            self.report = True
+        else:
+            self.report = False
+
+
+
+class portailNotify:
+    """
+        Classe permettant de vérifier s'il y a eu une interaction avec le portail
+    """
+
+    def __init__(self, token, currentQuestion):
+        self.token = token
+        self.currentQuestion = currentQuestion
+        self.report = 0
+
+        try:
+            ref = db.collection('Portail').document(self.token.upper())
+            document = ref.get()
+
+            if document.exists:
+                data = document.to_dict()
+                self.report = data["progress"][self.currentQuestion]
+            else:
+                self.report = 0
+            
+            self.listener = ref.on_snapshot(self.on_snapshot)
+        except:
+            logger.warn("Connection token not found")
+        
+
+    "Attendre une notification de la base de données (attendre la modification)"
+    def on_snapshot(self, doc_snapshot, changes, read_time):
+        for change in changes:
+            if change.type.name == 'MODIFIED':
+                doc = change.document.to_dict()
+                self.report = doc["progress"][self.currentQuestion]
+    
+    "Arreter d'attendre une notification de la base de données"
+    def stop_listening(self):
+        logger.warn("Stop listening")
+        self.listener.unsubscribe()
