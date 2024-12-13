@@ -1,4 +1,4 @@
 .vscode
 env
 __pycache__
-Programmation/other/firebase/key.json
+key.json
