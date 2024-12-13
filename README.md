@@ -5,6 +5,8 @@
 1. **GreenGenius** – Un modèle 3D interactif et un quiz éducatif sur des thématiques liées à l'écologie.
 2. **GreenGame** – L'infrastructure réseau de l'entreprise simulée, modélisée dans **Cisco Packet Tracer**.
 
+<img src="Image/Image4.png" alt="Application Green Genius" width="200"/>
+
 # Table des matières
 
 1. [📂 Structure du projet](#-structure-du-projet)
@@ -140,9 +142,9 @@ Développé par [Xen0r-star](https://github.com/xen0r-star) (Florian) pour son p
 <img src="Image/Image3.png" alt="Modèle 3D" width="400" />
 
 ### Application Green Genius
-<img src="Image/Image5.png" alt="Application Green Genius" width="300" />
-<img src="Image/Image6.png" alt="Application Green Genius" width="300" />
-<img src="Image/Image7.png" alt="Application Green Genius" width="300" />
+<img src="Image/image5.png" alt="Application Green Genius" width="300" />
+<img src="Image/image6.png" alt="Application Green Genius" width="300" />
+<img src="Image/image7.png" alt="Application Green Genius" width="300" />
 
 ### Infrastructure réseau
 <img src="Image/Image1.png" alt="Infrastructure réseau" width="400" />
