@@ -1,5 +1,3 @@
-
-import os
 import json
 from jsonschema import validate
 from pathlib import Path
@@ -64,18 +62,13 @@ class readJsonFile:
         return self.data
 
 
-data_directory = os.path.expanduser("~\\AppData\\Local\\GreenGenius")
-Path(data_directory).mkdir(parents=True, exist_ok=True)
-json_file_path = os.path.join(data_directory, "data.json")
-
-
 def addDataJsonFile(dataAdd):
     """
     fonction pour ajouter des valeurs dans un fichier json
     """
 
-    data_file = readJsonFile(json_file_path).get_data()
-    data_file["score"].append(dataAdd)
+    dataFile = readJsonFile(paths / "../../data/data.json").get()
+    dataFile["score"].append(dataAdd)
 
-    with open(json_file_path, 'w') as json_file:
-        json.dump(data_file, json_file, indent=4)
+    with open(paths / "../../data/data.json", 'w') as json_file:
+        json.dump(dataFile, json_file, indent=4)
