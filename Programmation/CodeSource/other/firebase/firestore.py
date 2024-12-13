@@ -7,6 +7,11 @@ from logzero import logger
 paths = Path(__file__).parent.resolve()
 
 
+API_KEY = "AIzaSyCB-MqCOrrkF2QE7xDHpho3CCMZIYrfpdk"
+FIREBASE_PROJECT_ID = "green-genius-fb24"
+USER_EMAIL = "portail@green-genius-quiz.com"
+USER_PASSWORD = "123456"
+
 "Connexion à la base de données Firebase"
 cred = credentials.Certificate(paths / "key.json")
 app = firebase_admin.initialize_app(cred)
