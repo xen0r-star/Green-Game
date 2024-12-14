@@ -67,8 +67,8 @@ def addDataJsonFile(dataAdd):
     fonction pour ajouter des valeurs dans un fichier json
     """
 
-    dataFile = readJsonFile(paths / "../../data/data.json").get()
+    dataFile = readJsonFile(paths / "../../../data/data.json").get()
     dataFile["score"].append(dataAdd)
 
-    with open(paths / "../../data/data.json", 'w') as json_file:
+    with open(paths / "../../../data/data.json", 'w') as json_file:
         json.dump(dataFile, json_file, indent=4)

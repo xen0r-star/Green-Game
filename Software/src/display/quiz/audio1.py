@@ -29,7 +29,7 @@ class displayAudio(Frame):
         self.textQuestion = textQuestion
         self.textResponse = textResponse
         self.correctResponse = correctResponse
-        self.audioFile = paths / "../../data/" / audioFile
+        self.audioFile = paths / "../../../data/" / audioFile
 
         self.questionNumber = f"{currentQuestion}/{maxQuestion}"
         self.questionNumberSelect = 0
@@ -52,13 +52,13 @@ class displayAudio(Frame):
     def addComponents(self):
         "------ Style de la fenêtre -------------------------------------------------------------------"
         if self.style == 2:
-            background_source = paths / "../../assets/Background-red.png"
+            background_source = paths / "../../../assets/Background-red.png"
             self.master.color_background = "#CF6953"
         elif self.style == 3:
-            background_source = paths / "../../assets/Background-blue.png"
+            background_source = paths / "../../../assets/Background-blue.png"
             self.master.color_background = "#53B1CF"
         else:
-            background_source = paths / "../../assets/Background.png"
+            background_source = paths / "../../../assets/Background.png"
 
         custom_Image(self, image=background_source, bg=self.master.color_background, 
                      width=700, height=700, 
@@ -70,7 +70,7 @@ class displayAudio(Frame):
         self.question.grid(column=0, row=0)
 
         fontStyle = font.Font(size=15)
-        custom_Image(self.question, image=paths / "../../assets/Frame5.png",
+        custom_Image(self.question, image=paths / "../../../assets/Frame5.png",
                      text=self.textQuestion, 
                      fg=self.master.color_text, font=fontStyle, wraplength=600,
                      bg=self.master.color_background, 
@@ -108,7 +108,7 @@ class displayAudio(Frame):
 
         self.buttonPlayStat = "Start"
         photo = ImageTk.PhotoImage(
-            Image.open(paths / "../../assets/quiz/Pause.png").resize((35, 35), Image.LANCZOS)
+            Image.open(paths / "../../../assets/quiz/Pause.png").resize((35, 35), Image.LANCZOS)
         )
         self.buttonPlay = Button(self.audio, command=self.play_pause, image=photo,
                         bg=self.master.color_second, 
@@ -125,7 +125,7 @@ class displayAudio(Frame):
         "------ Bouton pour valider la réponse et le numéro de la question -------------------------------------------------------------------"
         custom_Button(self, 
                         command=self.validate, 
-                        image=paths / "../../assets/quiz/Valider.png",
+                        image=paths / "../../../assets/quiz/Valider.png",
                         height=75, width=343,
                         bg=self.master.color_background,
                         column=0, row=2, ipadx=5, ipady=2)
@@ -137,7 +137,7 @@ class displayAudio(Frame):
 
         "------ Lancer le chronomètre -------------------------------------------------------------------"
         photo = ImageTk.PhotoImage(
-            Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
+            Image.open(paths / "../../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
         )
         self.header.config(image=photo)
         self.header.image = photo
@@ -175,7 +175,7 @@ class displayAudio(Frame):
             self.start_sound()
 
             photo = ImageTk.PhotoImage(
-                Image.open(paths / "../../assets/quiz/Play.png").resize((35, 35), Image.LANCZOS)
+                Image.open(paths / "../../../assets/quiz/Play.png").resize((35, 35), Image.LANCZOS)
             )
             self.buttonPlay.config(image=photo)
             self.buttonPlay.image = photo
@@ -187,7 +187,7 @@ class displayAudio(Frame):
             pygame.mixer.music.pause()
 
             photo = ImageTk.PhotoImage(
-                Image.open(paths / "../../assets/quiz/Pause.png").resize((35, 35), Image.LANCZOS)
+                Image.open(paths / "../../../assets/quiz/Pause.png").resize((35, 35), Image.LANCZOS)
             )
             self.buttonPlay.config(image=photo)
             self.buttonPlay.image = photo
@@ -197,7 +197,7 @@ class displayAudio(Frame):
             self.update_progress()
 
             photo = ImageTk.PhotoImage(
-                Image.open(paths / "../../assets/quiz/Play.png").resize((35, 35), Image.LANCZOS)
+                Image.open(paths / "../../../assets/quiz/Play.png").resize((35, 35), Image.LANCZOS)
             )
             self.buttonPlay.config(image=photo)
             self.buttonPlay.image = photo

@@ -35,7 +35,7 @@ class displayDuo(Frame):
 
 
     def addComponents(self):
-        custom_Image(self, image=paths / "../assets/Background.png", 
+        custom_Image(self, image=paths / "../../assets/Background.png", 
                      bg=self.master.color_background, 
                      width=700, height=700, 
                      column=0, columnspan=2, row=0, rowspan=3)
@@ -45,12 +45,12 @@ class displayDuo(Frame):
         self.navbar = Frame(self)
         self.navbar.grid(column=0, columnspan=2, row=0)
 
-        custom_Image(self.navbar, image=paths / "../assets/duo/Header_Duo.png", 
+        custom_Image(self.navbar, image=paths / "../../assets/duo/Header_Duo.png", 
                      bg=self.master.color_background, 
                      width=571, height=82, 
                      column=0, columnspan=2, row=0)
         
-        custom_Button(self.navbar, image=paths / "../assets/Home.png",
+        custom_Button(self.navbar, image=paths / "../../assets/Home.png",
                       command=self.master.startGame,
                       bg=self.master.color_second,
                       width=55, height=55,
@@ -60,7 +60,7 @@ class displayDuo(Frame):
 
         "------ Partie 1 - Rejoindre/Créer un groupe -------------------------------------------------------------------"
         photo = ImageTk.PhotoImage(
-            Image.open(paths / "../assets/duo/Join_Group2.png").resize((275, 204), Image.LANCZOS)
+            Image.open(paths / "../../assets/duo/Join_Group2.png").resize((275, 204), Image.LANCZOS)
         )
         self.button_join = Button(self, command=self.join_group, image=photo, 
                                   bg=self.master.color_background, 
@@ -71,7 +71,7 @@ class displayDuo(Frame):
         self.button_join.grid(column=0, row=1, padx=(55, 0), ipadx=5, ipady=2)
 
         photo = ImageTk.PhotoImage(
-            Image.open(paths / "../assets/duo/Create_Group1.png").resize((275, 204), Image.LANCZOS)
+            Image.open(paths / "../../assets/duo/Create_Group1.png").resize((275, 204), Image.LANCZOS)
         )
         self.button_create = Button(self, command=self.create_group, image=photo, 
                                     bg=self.master.color_background, 
@@ -95,13 +95,13 @@ class displayDuo(Frame):
 
         "------ Changer l'image du bouton -------------------------------------------------------------------"
         photo_join = ImageTk.PhotoImage(
-            Image.open(paths / "../assets/duo/Join_Group2.png").resize((275, 204), Image.LANCZOS)
+            Image.open(paths / "../../assets/duo/Join_Group2.png").resize((275, 204), Image.LANCZOS)
         )
         self.button_join.config(image=photo_join)
         self.button_join.image = photo_join
 
         photo_create = ImageTk.PhotoImage(
-            Image.open(paths / "../assets/duo/Create_Group1.png").resize((275, 204), Image.LANCZOS)
+            Image.open(paths / "../../assets/duo/Create_Group1.png").resize((275, 204), Image.LANCZOS)
         )
         self.button_create.config(image=photo_create)
         self.button_create.image = photo_create
@@ -115,7 +115,7 @@ class displayDuo(Frame):
         self.frame.grid_rowconfigure(1, weight=1)
         self.frame.grid_rowconfigure(2, weight=1)
 
-        custom_Image(self.frame, image=paths / "../assets/Frame3.png", 
+        custom_Image(self.frame, image=paths / "../../assets/Frame3.png", 
                      bg=self.master.color_background, 
                      height=274, width=571, 
                      column=0, row=0, rowspan=3)
@@ -135,7 +135,7 @@ class displayDuo(Frame):
         self.entry.bind("<KeyRelease>", self.center_text)
 
         photo = ImageTk.PhotoImage(
-            Image.open(paths / "../assets/duo/Join_Button.png").resize((303, 51), Image.LANCZOS)
+            Image.open(paths / "../../assets/duo/Join_Button.png").resize((303, 51), Image.LANCZOS)
         )
         self.button_joined = Button(self.frame, command=lambda: self.join(self.entry.get(1.0, END).replace('\n', '')), image=photo, 
                                     bg=self.master.color_second,
@@ -164,13 +164,13 @@ class displayDuo(Frame):
 
         "------ Changer l'image du bouton -------------------------------------------------------------------"
         photo_join = ImageTk.PhotoImage(
-            Image.open(paths / "../assets/duo/Join_Group1.png").resize((275, 204), Image.LANCZOS)
+            Image.open(paths / "../../assets/duo/Join_Group1.png").resize((275, 204), Image.LANCZOS)
         )
         self.button_join.config(image=photo_join)
         self.button_create.image = photo_join
 
         photo_create = ImageTk.PhotoImage(
-            Image.open(paths / "../assets/duo/Create_Group2.png").resize((275, 204), Image.LANCZOS)
+            Image.open(paths / "../../assets/duo/Create_Group2.png").resize((275, 204), Image.LANCZOS)
         )
         self.button_create.config(image=photo_create)
         self.button_join.image = photo_create
@@ -183,7 +183,7 @@ class displayDuo(Frame):
         self.frame.grid_rowconfigure(0, weight=1)
         self.frame.grid_rowconfigure(1, weight=1)
 
-        custom_Image(self.frame, image=paths / "../assets/Frame3.png", 
+        custom_Image(self.frame, image=paths / "../../assets/Frame3.png", 
                      bg=self.master.color_background, 
                      height=274, width=571, 
                      column=0, row=0, rowspan=2)
@@ -195,7 +195,7 @@ class displayDuo(Frame):
 
         
         self.create_group_connexion = createGroup()
-        self.readFile = readJsonFileSchema(paths / "../data/question.json").get()
+        self.readFile = readJsonFileSchema(paths / "../../data/question.json").get()
         if self.readFile == []:
             self.error()
 
@@ -209,7 +209,7 @@ class displayDuo(Frame):
 
 
         fontStyle = font.Font(size=27, weight="bold")
-        self.code = custom_Image(self.frame, image=paths / "../assets/Frame4.png", 
+        self.code = custom_Image(self.frame, image=paths / "../../assets/Frame4.png", 
                                  font=fontStyle, text=self.create_group_connexion.id,
                                  width=499, height=56,
                                  bg=self.master.color_second, fg=self.master.color_text, 

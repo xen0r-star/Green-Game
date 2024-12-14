@@ -50,13 +50,13 @@ class displayDragAndDrop1(Frame):
     def addComponents(self):
         "------ Style de la fenêtre -------------------------------------------------------------------"
         if self.style == 2:
-            background_source = paths / "../../assets/Background-red.png"
+            background_source = paths / "../../../assets/Background-red.png"
             self.master.color_background = "#CF6953"
         elif self.style == 3:
-            background_source = paths / "../../assets/Background-blue.png"
+            background_source = paths / "../../../assets/Background-blue.png"
             self.master.color_background = "#53B1CF"
         else:
-            background_source = paths / "../../assets/Background.png"
+            background_source = paths / "../../../assets/Background.png"
 
         custom_Image(self, image=background_source, bg=self.master.color_background, 
                      width=700, height=700, 
@@ -68,7 +68,7 @@ class displayDragAndDrop1(Frame):
         self.question.grid(column=0, row=0)
 
         fontStyle = font.Font(size=15)
-        custom_Image(self.question, image=paths / "../../assets/Frame5.png",
+        custom_Image(self.question, image=paths / "../../../assets/Frame5.png",
                      text=self.textQuestion, 
                      fg=self.master.color_text, font=fontStyle, wraplength=600,
                      bg=self.master.color_background, 
@@ -87,7 +87,7 @@ class displayDragAndDrop1(Frame):
 
         self.canvas = Canvas(self.body, height=325, width=620, bg=self.master.color_background, bd=0, highlightthickness=0)
         self.canvas.grid(column=0, row=0)
-        self.photo = ImageTk.PhotoImage(Image.open(paths / "../../assets/quiz/timeLine.png"))
+        self.photo = ImageTk.PhotoImage(Image.open(paths / "../../../assets/quiz/timeLine.png"))
         self.canvas.create_image(620 // 2, 97, anchor=CENTER, image=self.photo)
 
         self.rectangles = []
@@ -104,7 +104,7 @@ class displayDragAndDrop1(Frame):
         "------ Bouton pour valider la réponse et le numéro de la question -------------------------------------------------------------------"
         custom_Button(self, 
                         command=self.validate, 
-                        image=paths / "../../assets/quiz/Valider.png",
+                        image=paths / "../../../assets/quiz/Valider.png",
                         height=75, width=343,
                         bg=self.master.color_background,
                         column=0, row=2, ipadx=5, ipady=2)
@@ -116,7 +116,7 @@ class displayDragAndDrop1(Frame):
 
         "------ Lancer le chronomètre -------------------------------------------------------------------"
         photo = ImageTk.PhotoImage(
-            Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
+            Image.open(paths / "../../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
         )
         self.header.config(image=photo)
         self.header.image = photo

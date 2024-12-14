@@ -52,13 +52,13 @@ class displayChoice2(Frame):
     def addComponents(self):
         "------ Style de la fenêtre -------------------------------------------------------------------"
         if self.style == 2:
-            background_source = paths / "../../assets/Background-red.png"
+            background_source = paths / "../../../assets/Background-red.png"
             self.master.color_background = "#CF6953"
         elif self.style == 3:
-            background_source = paths / "../../assets/Background-blue.png"
+            background_source = paths / "../../../assets/Background-blue.png"
             self.master.color_background = "#53B1CF"
         else:
-            background_source = paths / "../../assets/Background.png"
+            background_source = paths / "../../../assets/Background.png"
 
         custom_Image(self, image=background_source, bg=self.master.color_background, 
                      width=700, height=700, 
@@ -70,7 +70,7 @@ class displayChoice2(Frame):
         self.question.grid(column=0, row=0)
 
         fontStyle = font.Font(size=15)
-        custom_Image(self.question, image=paths / "../../assets/Frame5.png",
+        custom_Image(self.question, image=paths / "../../../assets/Frame5.png",
                      text=self.textQuestion, 
                      fg=self.master.color_text, font=fontStyle, wraplength=600,
                      bg=self.master.color_background, 
@@ -96,7 +96,7 @@ class displayChoice2(Frame):
         if self.style != 4:
             custom_Button(self, 
                             command=self.validate, 
-                            image=paths / "../../assets/quiz/Valider.png",
+                            image=paths / "../../../assets/quiz/Valider.png",
                             height=75, width=343,
                             bg=self.master.color_background,
                             column=0, row=2, ipadx=5, ipady=2)
@@ -113,7 +113,7 @@ class displayChoice2(Frame):
 
         "------ Lancer le chronomètre -------------------------------------------------------------------"
         photo = ImageTk.PhotoImage(
-            Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
+            Image.open(paths / "../../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
         )
         self.header.config(image=photo)
         self.header.image = photo

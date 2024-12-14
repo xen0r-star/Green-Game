@@ -30,18 +30,18 @@ class displayMenu(Frame):
 
 
     def addComponents(self):
-        custom_Image(self, image=paths / "../assets/Background.png", bg=self.master.color_background, width=700, height=700, column=0, columnspan=2, row=0, rowspan=3)
+        custom_Image(self, image=paths / "../../assets/Background.png", bg=self.master.color_background, width=700, height=700, column=0, columnspan=2, row=0, rowspan=3)
 
         "------ Barre de navigation -------------------------------------------------------------------"
         self.navbar = Frame(self)
         self.navbar.grid(column=0, columnspan=2, row=0)
 
-        custom_Image(self.navbar, image=paths / "../assets/Logo.png", 
+        custom_Image(self.navbar, image=paths / "../../assets/Logo.png", 
                      bg=self.master.color_background, 
                      width=571, height=82, 
                      column=0, columnspan=2, row=0)
         
-        custom_Button(self.navbar, image=paths / "../assets/menu/Return.png",
+        custom_Button(self.navbar, image=paths / "../../assets/menu/Return.png",
                       command=self.master.home,
                       bg=self.master.color_second,
                       width=55, height=55,
@@ -52,21 +52,21 @@ class displayMenu(Frame):
         "------ Bouton du menu -------------------------------------------------------------------"
         custom_Button(self, 
                         command=self.master.menuSolo, 
-                        image=paths / "../assets/menu/Solo.png",
+                        image=paths / "../../assets/menu/Solo.png",
                         height=280, width=268, 
                         bg=self.master.color_background,
                         column=0, row=1, padx=(30, 0), ipadx=5, ipady=2)
         
         custom_Button(self, 
                         command=self.master.menuDuo, 
-                        image=paths / "../assets/menu/Duo.png",
+                        image=paths / "../../assets/menu/Duo.png",
                         height=280, width=268,
                         bg=self.master.color_background,
                         column=1, row=1, padx=(0, 30), ipadx=5, ipady=2)
     
         custom_Button(self, 
                         command=self.master.menuPortail, 
-                        image=paths / "../assets/menu/Portail.png",
+                        image=paths / "../../assets/menu/Portail.png",
                         height=168, width=571,
                         bg=self.master.color_background,
                         column=0, row=2, ipadx=5, ipady=2, columnspan=2)

@@ -37,10 +37,10 @@ class displayScoreDuo(Frame):
     def addComponents(self):
         "------ Style de la fenêtre -------------------------------------------------------------------"
         if self.style == 2:
-            background_source = paths / "../assets/Background-red.png"
+            background_source = paths / "../../assets/Background-red.png"
             self.master.color_background = "#CF6953"
         elif self.style == 3:
-            background_source = paths / "../assets/Background-blue.png"
+            background_source = paths / "../../assets/Background-blue.png"
             self.master.color_background = "#53B1CF"
         else:
             background_source = paths / "../../assets/Background.png"
@@ -55,12 +55,12 @@ class displayScoreDuo(Frame):
         self.navbar = Frame(self)
         self.navbar.grid(column=0, row=0)
 
-        custom_Image(self.navbar, image=paths / "../assets/score/Header_Score.png", 
+        custom_Image(self.navbar, image=paths / "../../assets/score/Header_Score.png", 
                      bg=self.master.color_background, 
                      width=571, height=82, 
                      column=0, columnspan=2, row=0)
         
-        custom_Button(self.navbar, image=paths / "../assets/Home.png",
+        custom_Button(self.navbar, image=paths / "../../assets/Home.png",
                       command=self.master.startGame,
                       bg=self.master.color_second,
                       width=55, height=55,
@@ -76,7 +76,7 @@ class displayScoreDuo(Frame):
         self.header.grid(column=0, row=1)
 
         fontStyle = font.Font(size=30, weight="bold")
-        custom_Image(self.header, image=paths / "../assets/score/Frame2.png",
+        custom_Image(self.header, image=paths / "../../assets/score/Frame2.png",
                      bg=self.master.color_background, 
                      width=453, height=126, 
                      column=0, row=0, rowspan=2)
@@ -183,7 +183,7 @@ class displayScoreDuo(Frame):
         image.paste(greyImage, (0, 0), greyImage)
         image.paste(redImage, (0, 0), redImage)
 
-        borderImage = Image.open(paths / "../assets/score/border.png")
+        borderImage = Image.open(paths / "../../assets/score/border.png")
 
         position = ((571 - borderImage.width) // 2, (82 - borderImage.height) // 2)
         image.paste(borderImage, position, borderImage)

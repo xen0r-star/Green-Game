@@ -26,7 +26,7 @@ class portail:
         self.playerScore = 0
         self.errorQuestion = []
 
-        self.readFile = readJsonFileSchema(paths / '../../data/question.json').get()
+        self.readFile = readJsonFileSchema(paths / '../../../data/question.json').get()
         if self.readFile == []:
             self.error()
 

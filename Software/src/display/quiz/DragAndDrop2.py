@@ -1,23 +1,23 @@
 from tkinter import *
 from tkinter import font
-from PIL import Image, ImageTk, ImageDraw
+from PIL import Image, ImageTk
 from pathlib import Path
 
-from Software.src.widgets.Button import custom_Button
-from Software.src.widgets.Image import custom_Image
+from Software.widgets.Button import custom_Button
+from Software.widgets.Image import custom_Image
 
-from Software.src.other.chrono import ChronoApp
+from Software.other.chrono import ChronoApp
 
 paths = Path(__file__).parent.resolve()
 
 
 
-class displayDragAndDrop3(Frame):
+class displayDragAndDrop2(Frame):
     """
-        Interface du quiz - Partie 7 : Jeu de replacement des images dans la bonne catégorie
+        Interface du quiz - Partie 6 : Jeu de replacement des textes dans la bonne catégorie
     """
 
-    def __init__(self, master, callback, textQuestion, imageResponse, textZones, correctResponse, 
+    def __init__(self, master, callback, textQuestion, textResponse, textZones, correctResponse, 
                  style=1, time=60, currentQuestion = 0, maxQuestion=20):
         super().__init__(master)
         self.callback = callback
@@ -26,12 +26,12 @@ class displayDragAndDrop3(Frame):
         self.time = time
 
         self.textQuestion = textQuestion
-        self.imageResponse = imageResponse
+        self.textResponse = textResponse
         self.textZones = textZones
         self.correctResponse = correctResponse
 
         self.questionNumber = f"{currentQuestion}/{maxQuestion}"
-        self.response = [[0, 0] for _ in range(len(self.imageResponse))]
+        self.response = [[0, 0] for _ in range(len(self.textResponse))]
         self.points = 0
 
         for content in self.master.grid_slaves():
@@ -51,14 +51,14 @@ class displayDragAndDrop3(Frame):
     def addComponents(self):
         "------ Style de la fenêtre -------------------------------------------------------------------"
         if self.style == 2:
-            background_source = paths / "../../assets/Background-red.png"
+            background_source = paths / "../../../assets/Background-red.png"
             self.master.color_background = "#CF6953"
         elif self.style == 3:
-            background_source = paths / "../../assets/Background-blue.png"
+            background_source = paths / "../../../assets/Background-blue.png"
             self.master.color_background = "#53B1CF"
         else:
-            background_source = paths / "../../assets/Background.png"
-        
+            background_source = paths / "../../../assets/Background.png"
+
         custom_Image(self, image=background_source, bg=self.master.color_background, 
                      width=700, height=700, 
                      column=0, row=0, rowspan=3)
@@ -69,7 +69,7 @@ class displayDragAndDrop3(Frame):
         self.question.grid(column=0, row=0)
 
         fontStyle = font.Font(size=15)
-        custom_Image(self.question, image=paths / "../../assets/Frame5.png",
+        custom_Image(self.question, image=paths / "../../../assets/Frame5.png",
                      text=self.textQuestion, 
                      fg=self.master.color_text, font=fontStyle, wraplength=600,
                      bg=self.master.color_background, 
@@ -88,36 +88,26 @@ class displayDragAndDrop3(Frame):
 
         self.canvas = Canvas(self.body, height=325, width=620, bg=self.master.color_background, bd=0, highlightthickness=0)
         self.canvas.grid(column=0, row=0)
-        self.photo = ImageTk.PhotoImage(Image.open(paths / "../../assets/quiz/zone.png"))
+        self.photo = ImageTk.PhotoImage(Image.open(paths / "../../../assets/quiz/zone.png"))
         self.canvas.create_image(620 // 2, 97, anchor=CENTER, image=self.photo)
         self.canvas.create_text(134, 18, text=self.textZones[0], font=("Arial", 15), anchor=N, fill="white")
         self.canvas.create_text(486, 18, text=self.textZones[1], font=("Arial", 15), anchor=N, fill="white")
 
         self.rectangles = []
-        self.photoResponse = []
-        for i in range(len(self.imageResponse)):
-            src = paths / "../../data" / self.imageResponse[i]
-            img = Image.open(src).convert("RGBA")
-            draw = ImageDraw.Draw(img)
-            width, height = img.size
-            
-            draw.rectangle([0, 0, width, 4], fill="white")
-            draw.rectangle([0, 0, 4, height], fill="white")
-            draw.rectangle([0, height-4, width, height], fill="white")
-            draw.rectangle([width-4, 0, width, height], fill="white")
-
-            photo = ImageTk.PhotoImage(img)
-            self.photoResponse.append(photo)
-            rect = self.canvas.create_image(84 + (117 * i), 220, anchor=NW, image=photo)
-
-            DragDrop(self.canvas, rect, i+1, self.response, self.callbackPosition) 
-
+        for i in range(len(self.textResponse)):
+            rect = self.canvas.create_rectangle(
+                84 + (117 * i), 220, 84 + (117 * i) + 100, 220 + 100, 
+                fill=self.master.color_fourth, outline="#FFFFFF", width=4
+            )
+            text_items = self.create_wrapped_text(84 + (117 * i) + 5, 220 + 3, self.textResponse[i], max_width=90)
+            self.rectangles.append((rect, text_items))
+            DragDrop(self.canvas, rect, text_items, i+1, self.response, self.callbackPosition) 
 
 
         "------ Bouton pour valider la réponse et le numéro de la question -------------------------------------------------------------------"
         custom_Button(self, 
                         command=self.validate, 
-                        image=paths / "../../assets/quiz/Valider.png",
+                        image=paths / "../../../assets/quiz/Valider.png",
                         height=75, width=343,
                         bg=self.master.color_background,
                         column=0, row=2, ipadx=5, ipady=2)
@@ -129,11 +119,38 @@ class displayDragAndDrop3(Frame):
 
         "------ Lancer le chronomètre -------------------------------------------------------------------"
         photo = ImageTk.PhotoImage(
-            Image.open(paths / "../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
+            Image.open(paths / "../../../assets/Frame6.png").resize((250, 40), Image.LANCZOS)
         )
         self.header.config(image=photo)
         self.header.image = photo
         self.chrono = ChronoApp(self.master, self, self.header, self.time)
+    
+
+    "Division du texte des différents éléments pour éviter qu'il ne dépasse du cadre de l'élément"
+    def create_wrapped_text(self, x, y, text, max_width):
+        words = text.split()
+        lines = []
+        line = ""
+        text_items = []
+
+        for word in words:
+            test_line = f"{line} {word}".strip()
+            temp_text_item = self.canvas.create_text(x, y, text=test_line, font=("Arial", 12), anchor=NW, fill="white")
+            bbox = self.canvas.bbox(temp_text_item)
+            self.canvas.delete(temp_text_item)
+
+            if bbox[2] - bbox[0] <= max_width:
+                line = test_line
+            else:
+                lines.append(line)
+                line = word
+        
+        lines.append(line)
+        for i, line in enumerate(lines):
+            text_item = self.canvas.create_text(x, y + i * 15, text=line, fill="white", font=("Arial", 12), anchor=NW)
+            text_items.append(text_item)
+
+        return text_items
 
 
     "Retourner la position des éléments"
@@ -163,14 +180,14 @@ class displayDragAndDrop3(Frame):
 
         if a == len(self.response):
             self.points = 1
-
+        
         if self.callback:
             self.callback()
-
+    
     "Retourner le score"
     def get(self):
         return self.points
-
+            
 
 
 
@@ -179,10 +196,11 @@ class DragDrop:
         Classe permettant le déplacement des éléments avec la souris
     """
     
-    def __init__(self, canvas, item, rect_id, response, callbackPosition):
+    def __init__(self, canvas, item, text_items, rect_id, response, callbackPosition):
         self.canvas = canvas
         self.item = item
         self.response = response
+        self.text_items = text_items
         self.rect_id = rect_id
         self.callbackPosition = callbackPosition
         self.magnetZone = [
@@ -195,6 +213,10 @@ class DragDrop:
         self.canvas.tag_bind(self.item, '<ButtonPress-1>', self.on_press)
         self.canvas.tag_bind(self.item, '<B1-Motion>', self.on_drag)
         self.canvas.tag_bind(self.item, '<ButtonRelease-1>', self.on_release)
+        for text_item in self.text_items:
+            self.canvas.tag_bind(text_item, '<ButtonPress-1>', self.on_press)
+            self.canvas.tag_bind(text_item, '<B1-Motion>', self.on_drag)
+            self.canvas.tag_bind(text_item, '<ButtonRelease-1>', self.on_release)
         self.is_magnetized = False
 
     def on_press(self, event):
@@ -210,6 +232,8 @@ class DragDrop:
             return
 
         self.canvas.move(self.item, dx, dy)
+        for text_item in self.text_items:
+            self.canvas.move(text_item, dx, dy)
         self.x = event.x
         self.y = event.y
         self.check_magnet()
@@ -239,6 +263,8 @@ class DragDrop:
                         return
                     
                     self.canvas.move(self.item, dx, dy)
+                    for text_item in self.text_items:
+                        self.canvas.move(text_item, dx, dy)
                     self.is_magnetized = True
                 return
 

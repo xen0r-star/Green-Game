@@ -34,7 +34,7 @@ class displayScore(Frame):
 
     def addComponents(self):
         "------ Style de la fenêtre -------------------------------------------------------------------"
-        custom_Image(self, image=paths / "../assets/Background.png", 
+        custom_Image(self, image=paths / "../../assets/Background.png", 
                      bg=self.master.color_background, 
                      width=700, height=700, 
                      column=0, row=0, rowspan=3)
@@ -44,12 +44,12 @@ class displayScore(Frame):
         self.navbar = Frame(self)
         self.navbar.grid(column=0, row=0)
 
-        custom_Image(self.navbar, image=paths / "../assets/score/Header_Score.png", 
+        custom_Image(self.navbar, image=paths / "../../assets/score/Header_Score.png", 
                      bg=self.master.color_background, 
                      width=571, height=82, 
                      column=0, columnspan=2, row=0)
         
-        custom_Button(self.navbar, image=paths / "../assets/Home.png",
+        custom_Button(self.navbar, image=paths / "../../assets/Home.png",
                       command=self.master.startGame,
                       bg=self.master.color_second,
                       width=55, height=55,
@@ -62,13 +62,13 @@ class displayScore(Frame):
         "------ Affichage du score -------------------------------------------------------------------"
         fontStyle = font.Font(size=55, weight="bold")
         if self.playerScore >= 50:
-            custom_Image(self, image=paths / "../assets/score/Frame1.png",
+            custom_Image(self, image=paths / "../../assets/score/Frame1.png",
                         text=str(self.playerScore) + " %", font=fontStyle, fg=self.master.color_text,
                         bg=self.master.color_background, 
                         width=240, height=126, 
                         column=0, row=1)
         else:
-            custom_Image(self, image=paths / "../assets/score/Frame3.png",
+            custom_Image(self, image=paths / "../../assets/score/Frame3.png",
                         text=str(self.playerScore) + " %", font=fontStyle, fg=self.master.color_text,
                         bg=self.master.color_background, 
                         width=240, height=126, 
@@ -88,7 +88,7 @@ class displayScore(Frame):
         self.center_text(None)
         self.entry.bind("<KeyRelease>", self.center_text)
 
-        custom_Button(self.speudo, image=paths / "../assets/score/Valider.png",
+        custom_Button(self.speudo, image=paths / "../../assets/score/Valider.png",
                       command=self.saveData,
                       bg=self.master.color_background,
                       width=55, height=55,
@@ -114,7 +114,7 @@ class displayScore(Frame):
             elementErrorQuestion.grid_columnconfigure(0, weight=1)
             elementErrorQuestion.grid_columnconfigure(1, weight=1)
 
-            custom_Image(elementErrorQuestion, paths / "../assets/score/Error.png", width=50, height=50, bg=self.master.color_second, 
+            custom_Image(elementErrorQuestion, paths / "../../assets/score/Error.png", width=50, height=50, bg=self.master.color_second, 
                          row=0, column=0, sticky=W, padx=(10, 5))
             
             if len(self.errorQuestion[i]) > 40:

@@ -24,7 +24,7 @@ class displayStart(Frame):
         self.canvas_height = 340
         self.canvas_border = 6
 
-        self.video_source = [str(paths / "../assets/video/Car 1.mp4"), str(paths / "../assets/video/Car 2.mp4")]
+        self.video_source = [str(paths / "../../assets/video/Car 1.mp4"), str(paths / "../../assets/video/Car 2.mp4")]
 
         self.config(bg=self.master.color_background)
         self.grid(column=0, row=0, sticky="nsew")
@@ -38,7 +38,7 @@ class displayStart(Frame):
 
 
     def addComponents(self):
-        custom_Image(self, image=paths / "../assets/Background.png", bg=self.master.color_background, width=700, height=700, column=0, row=0, rowspan=3)
+        custom_Image(self, image=paths / "../../assets/Background.png", bg=self.master.color_background, width=700, height=700, column=0, row=0, rowspan=3)
 
         "------ Video -------------------------------------------------------------------"
         self.canvas = Canvas(self, height=self.canvas_height, width=self.canvas_width, bg=self.master.color_second, highlightthickness=self.canvas_border, highlightbackground="white")
@@ -54,7 +54,7 @@ class displayStart(Frame):
         custom_Button(self, 
                         command=self.master.startGame, 
                         text="J O U E R", font=font.Font(size=30, weight="bold"),
-                        image=paths / "../assets/Button1.png",
+                        image=paths / "../../assets/Button1.png",
                         height=90, width=412, 
                         bg=self.master.color_background, fg=self.master.color_text, 
                         column=0, row=1, pady=(10,0), ipadx=5, ipady=2)
@@ -62,7 +62,7 @@ class displayStart(Frame):
         custom_Button(self, 
                         command=self.master.quit, 
                         text="Q U I T T E R", font=font.Font(size=15, weight="bold"),
-                        image=paths / "../assets/Button1.png",
+                        image=paths / "../../assets/Button1.png",
                         height=50, width=230, 
                         bg=self.master.color_background, fg=self.master.color_text, 
                         column=0, row=2, pady=(0, 50), ipadx=5, ipady=2)
